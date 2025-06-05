@@ -1,0 +1,59 @@
+@mixin useFont($type) {
+	font-style: normal;
+	font-size: var(--font-#{$type}-size);
+	line-height: var(--font-#{$type}-height);
+	font-weight: var(--font-#{$type}-weight);
+}
+
+@mixin useFixedSize($width, $height) {
+	min-width: $width;
+	min-height: $height;
+	max-width: $width;
+	max-height: $height;
+}
+
+@mixin screen1920 {
+	@media screen and (min-width: 1920px) {
+		@content;
+	}
+}
+
+@mixin screen1440 {
+	@media screen and (min-width: 1440px) {
+		@content;
+	}
+}
+
+@mixin screen1024 {
+	@media screen and (min-width: 1024px) {
+		@content;
+	}
+}
+
+@mixin screen768 {
+	@media screen and (min-width: 768px) {
+		@content;
+	}
+}
+
+@mixin mobile {
+	@media screen and (max-width: 768px) {
+		@content;
+	}
+}
+
+@mixin scrollbar {
+	&::-webkit-scrollbar {
+		width: 0.5rem;
+	}
+
+	&::-webkit-scrollbar-track {
+		margin-block: 0.556rem;
+		background-color: inherit;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background-color: var(--color-gray200);
+		border-radius: 0.278rem;
+	}
+}

@@ -1,0 +1,128 @@
+@use '@/styles/_mixins.scss' as *;
+
+.input-wrapper {
+	position: relative;
+}
+
+.input-col {
+	width: 100%;
+	height: 100%;
+}
+
+.input-row {
+	display: flex;
+	flex-wrap: nowrap;
+	gap: 1.111rem;
+	align-items: center;
+	justify-content: space-between;
+	border-radius: 0.667rem;
+	color: var(--color-gray600);
+	border: 1px solid var(--color-gray200);
+	background-color: var(--color-gray50);
+	cursor: text;
+
+	.input-label {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+	.input {
+		width: 100%;
+		height: 100%;
+		color: var(--color-gray950);
+	}
+
+	&:focus-within,
+	&:focus-visible {
+		border: 1px solid var(--color-brand500);
+	}
+
+	&:focus-within,
+	&:focus-visible,
+	&.filled {
+		.input-label {
+			top: unset;
+			transform: translateY(0);
+		}
+
+		.input {
+			height: auto;
+			margin-top: 1rem;
+		}
+	}
+
+	&.filled {
+		border: 1px solid var(--color-gray300);
+	}
+
+	&.invalid {
+		border: 1px solid var(--color-error600);
+	}
+
+	&.required {
+		.input-label::after {
+			content: '*';
+			color: var(--color-brand400);
+		}
+	}
+
+	&.disabled {
+		pointer-events: none;
+		border: 1px solid var(--color-gray100);
+		color: var(--color-gray300);
+	}
+}
+
+.input-error {
+	@include useFont(tsmm);
+	position: absolute;
+	color: var(--color-error600);
+	top: 100%;
+	z-index: var(--z-index-input-error);
+}
+
+$sizes: (
+	lg: tmds,
+	xl: tlgs
+);
+$screens: 768, 1024, 1240, 1440, 1920;
+
+@mixin useInputSize($size, $font) {
+	height: var(--input-#{$size}-height);
+	padding: var(--input-#{$size}-padding);
+
+	.input-label {
+		@include useFont($font);
+	}
+
+	.input {
+		@include useFont($font);
+	}
+
+	&:focus-within,
+	&:focus-visible,
+	&.filled {
+		.input-label {
+			@include useFont(txss);
+		}
+	}
+}
+
+.input-row {
+	@each $size, $font in $sizes {
+		&.size-#{$size} {
+			@include useInputSize($size, $font);
+		}
+	}
+
+	@each $screen in $screens {
+		@each $size, $font in $sizes {
+			&.size-#{$size}#{$screen} {
+				@media screen and (min-width: #{$screen}px) {
+					@include useInputSize($size, $font);
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,190 @@
+:root {
+	--font-family: 'Manrope', sans-serif;
+
+	//Display - 2XL
+	--font-d2xlr-size: 4rem;
+	--font-d2xlr-height: 4.778rem;
+	--font-d2xlr-weight: 400;
+
+	--font-d2xlm-size: 4rem;
+	--font-d2xlm-height: 4.778rem;
+	--font-d2xlm-weight: 500;
+
+	--font-d2xls-size: 4rem;
+	--font-d2xls-height: 4.778rem;
+	--font-d2xls-weight: 600;
+
+	--font-d2xlb-size: 4rem;
+	--font-d2xlb-height: 4.778rem;
+	--font-d2xlb-weight: 700;
+
+	//Display - XL
+	--font-dxlr-size: 3.556rem;
+	--font-dxlr-height: 4.222rem;
+	--font-dxlr-weight: 400;
+
+	--font-dxlm-size: 3.556rem;
+	--font-dxlm-height: 4.222rem;
+	--font-dxlm-weight: 500;
+
+	--font-dxls-size: 3.556rem;
+	--font-dxls-height: 4.222rem;
+	--font-dxls-weight: 600;
+
+	--font-dxlb-size: 3.556rem;
+	--font-dxlb-height: 4.222rem;
+	--font-dxlb-weight: 700;
+
+	//Display - LG
+	--font-dlgr-size: 2.667rem;
+	--font-dlgr-height: 3.333rem;
+	--font-dlgr-weight: 400;
+
+	--font-dlgm-size: 2.667rem;
+	--font-dlgm-height: 3.333rem;
+	--font-dlgm-weight: 500;
+
+	--font-dlgs-size: 2.667rem;
+	--font-dlgs-height: 3.333rem;
+	--font-dlgs-weight: 600;
+
+	--font-dlgb-size: 2.667rem;
+	--font-dlgb-height: 3.333rem;
+	--font-dlgb-weight: 700;
+
+	//Display - MD
+	--font-dmdr-size: 2.222rem;
+	--font-dmdr-height: 2.667rem;
+	--font-dmdr-weight: 400;
+
+	--font-dmdm-size: 2.222rem;
+	--font-dmdm-height: 2.667rem;
+	--font-dmdm-weight: 500;
+
+	--font-dmds-size: 2.222rem;
+	--font-dmds-height: 2.667rem;
+	--font-dmds-weight: 600;
+
+	--font-dmdb-size: 2.222rem;
+	--font-dmdb-height: 2.667rem;
+	--font-dmdb-weight: 700;
+
+	//Display - SM
+	--font-dsmr-size: 1.778rem;
+	--font-dsmr-height: 2.222rem;
+	--font-dsmr-weight: 400;
+
+	--font-dsmm-size: 1.778rem;
+	--font-dsmm-height: 2.222rem;
+	--font-dsmm-weight: 500;
+
+	--font-dsms-size: 1.778rem;
+	--font-dsms-height: 2.222rem;
+	--font-dsms-weight: 600;
+
+	--font-dsmb-size: 1.778rem;
+	--font-dsmb-height: 2.222rem;
+	--font-dsmb-weight: 700;
+
+	//Display - XS
+	--font-dxsr-size: 1.333rem;
+	--font-dxsr-height: 1.778rem;
+	--font-dxsr-weight: 400;
+
+	--font-dxsm-size: 1.333rem;
+	--font-dxsm-height: 1.778rem;
+	--font-dxsm-weight: 500;
+
+	--font-dxss-size: 1.333rem;
+	--font-dxss-height: 1.778rem;
+	--font-dxss-weight: 600;
+
+	--font-dxsb-size: 1.333rem;
+	--font-dxsb-height: 1.778rem;
+	--font-dxsb-weight: 700;
+
+	//Test - XL
+	--font-txlr-size: 1.111rem;
+	--font-txlr-height: 1.556rem;
+	--font-txlr-weight: 400;
+
+	--font-txlm-size: 1.111rem;
+	--font-txlm-height: 1.556rem;
+	--font-txlm-weight: 500;
+
+	--font-txls-size: 1.111rem;
+	--font-txls-height: 1.556rem;
+	--font-txls-weight: 600;
+
+	--font-txlb-size: 1.111rem;
+	--font-txlb-height: 1.556rem;
+	--font-txlb-weight: 700;
+
+	//Test - LG
+	--font-tlgr-size: 1rem;
+	--font-tlgr-height: 1.333rem;
+	--font-tlgr-weight: 400;
+
+	--font-tlgm-size: 1rem;
+	--font-tlgm-height: 1.333rem;
+	--font-tlgm-weight: 500;
+
+	--font-tlgs-size: 1rem;
+	--font-tlgs-height: 1.333rem;
+	--font-tlgs-weight: 600;
+
+	--font-tlgb-size: 1rem;
+	--font-tlgb-height: 1.333rem;
+	--font-tlgb-weight: 700;
+
+	//Test - MD
+	--font-tmdr-size: 0.889rem;
+	--font-tmdr-height: 1.333rem;
+	--font-tmdr-weight: 400;
+
+	--font-tmdm-size: 0.889rem;
+	--font-tmdm-height: 1.333rem;
+	--font-tmdm-weight: 500;
+
+	--font-tmds-size: 0.889rem;
+	--font-tmds-height: 1.333rem;
+	--font-tmds-weight: 600;
+
+	--font-tmdb-size: 0.889rem;
+	--font-tmdb-height: 1.333rem;
+	--font-tmdb-weight: 700;
+
+	//Test - SM
+	--font-tsmr-size: 0.778rem;
+	--font-tsmr-height: 1.111rem;
+	--font-tsmr-weight: 400;
+
+	--font-tsmm-size: 0.778rem;
+	--font-tsmm-height: 1.111rem;
+	--font-tsmm-weight: 500;
+
+	--font-tsms-size: 0.778rem;
+	--font-tsms-height: 1.111rem;
+	--font-tsms-weight: 600;
+
+	--font-tsmb-size: 0.778rem;
+	--font-tsmb-height: 1.111rem;
+	--font-tsmb-weight: 700;
+
+	//Test - XS
+	--font-txsr-size: 0.667rem;
+	--font-txsr-height: 1rem;
+	--font-txsr-weight: 400;
+
+	--font-txsm-size: 0.667rem;
+	--font-txsm-height: 1rem;
+	--font-txsm-weight: 500;
+
+	--font-txss-size: 0.667rem;
+	--font-txss-height: 1rem;
+	--font-txss-weight: 600;
+
+	--font-txsb-size: 0.667rem;
+	--font-txsb-height: 1rem;
+	--font-txsb-weight: 700;
+}

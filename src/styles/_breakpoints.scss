@@ -1,0 +1,45 @@
+$dTypes: (
+	block: block,
+	iBlock: inline-block,
+	flex: flex,
+	iFlex: inline-flex,
+	grid: grid,
+	inline: inline
+);
+$screens: 768, 1024, 1240, 1440, 1920;
+
+@each $screen in $screens {
+	@each $dTName, $dTValue in $dTypes {
+		.d-#{$dTName}-lt-#{$screen} {
+			display: $dTValue !important;
+
+			@media screen and (min-width: #{$screen}px) {
+				display: none !important;
+			}
+		}
+
+		.d-#{$dTName}-lte-#{$screen} {
+			display: $dTValue !important;
+
+			@media screen and (min-width: #{$screen + 1}px) {
+				display: none !important;
+			}
+		}
+
+		.d-#{$dTName}-gte-#{$screen} {
+			display: none !important;
+
+			@media screen and (min-width: #{$screen}px) {
+				display: $dTValue !important;
+			}
+		}
+
+		.d-#{$dTName}-gt-#{$screen} {
+			display: none !important;
+
+			@media screen and (min-width: #{$screen + 1}px) {
+				display: $dTValue !important;
+			}
+		}
+	}
+}
