@@ -1,36 +1,18 @@
 @use '@/styles/_mixins.scss' as *;
 
 :root {
-	--layout-pad-x: 0.667rem;
-	--layout-pad-y: 1.111rem;
-	--layout-max-width: 106.667rem;
+	--layout-pad-x: 12px;
+	--layout-max-width: 1793px;
 
-	--icon-width: 1.333rem;
-	--icon-height: 1.333rem;
-	--icon-color: var(--color-black);
-
-	--border-radius: 1.1111rem;
+	--icon-width: 24px;
+	--icon-height: 24px;
+	--icon-color: inherit;
 
 	--z-index: 1;
-
-	--z-index-header: 4;
-	--z-index-mobile-menu: 3;
-
-	--z-index-intro-s: 2;
-	--z-index-intro-s-rect: 1;
-
-	--z-index-input-error: 2;
-	--z-index-select-options: 3;
-
-	--z-index-footer: 2;
-
-	--z-index-modal: 5;
-	--z-index-cookie: 6;
 }
 
-@include screen1920 {
+@include screen1900 {
 	:root {
-		--border-radius: 1.3333rem;
-		--layout-pad-x: 2.222rem;
+		--layout-pad-x: 63px;
 	}
 }

@@ -71,7 +71,7 @@ export default defineNuxtConfig({
 			lg: 1024,
 			xl: 1240,
 			xxl: 1440,
-			'2xl': 1920
+			'2xl': 1900
 		}
 	},
 	icon: {

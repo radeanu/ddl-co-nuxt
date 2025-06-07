@@ -1,22 +1,30 @@
 @font-face {
-	font-family: 'Manrope';
-	src: url('/fonts/Manrope-Medium.ttf');
+	font-family: 'Golos Text';
+	src: url('/fonts/GolosText-Regular.ttf');
+	font-style: normal;
+	font-weight: 400;
+	// font-display: swap;
+}
+
+@font-face {
+	font-family: 'Golos Text';
+	src: url('/fonts/GolosText-Medium.ttf');
 	font-style: normal;
 	font-weight: 500;
 	// font-display: swap;
 }
 
 @font-face {
-	font-family: 'Manrope';
-	src: url('/fonts/Manrope-SemiBold.ttf');
+	font-family: 'Golos Text';
+	src: url('/fonts/GolosText-SemiBold.ttf');
 	font-style: normal;
 	font-weight: 600;
 	// font-display: swap;
 }
 
 @font-face {
-	font-family: 'Manrope';
-	src: url('/fonts/Manrope-Bold.ttf');
+	font-family: 'Golos Text';
+	src: url('/fonts/GolosText-Bold.ttf');
 	font-style: normal;
 	font-weight: 700;
 	// font-display: swap;

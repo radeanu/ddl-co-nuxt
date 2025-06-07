@@ -12,14 +12,20 @@
 	max-height: $height;
 }
 
-@mixin screen1920 {
-	@media screen and (min-width: 1920px) {
+@mixin screen1900 {
+	@media screen and (min-width: 1900px) {
 		@content;
 	}
 }
 
 @mixin screen1440 {
 	@media screen and (min-width: 1440px) {
+		@content;
+	}
+}
+
+@mixin screen1240 {
+	@media screen and (min-width: 1240px) {
 		@content;
 	}
 }

@@ -21,5 +21,9 @@
     "vue-router": "^4.5.1",
     "yandex-metrika-module-nuxt3": "^1.5.3",
     "yup": "^1.6.1"
+  },
+  "devDependencies": {
+    "eslint-plugin-vuejs-accessibility": "^2.4.1",
+    "sass-embedded": "^1.89.1"
   }
 }

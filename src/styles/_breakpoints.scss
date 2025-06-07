@@ -6,7 +6,7 @@ $dTypes: (
 	grid: grid,
 	inline: inline
 );
-$screens: 768, 1024, 1240, 1440, 1920;
+$screens: 768, 1024, 1240, 1440, 1900;
 
 @each $screen in $screens {
 	@each $dTName, $dTValue in $dTypes {

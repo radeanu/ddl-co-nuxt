@@ -1,9 +1,22 @@
 <template>
-	<div class="layout">
+	<div class="default">
+		<DHeader />
+
 		<slot />
+
+		<!-- <FooterSectionComp />
+
+		<ClientOnly>
+			<LazyCookiePopup v-if="dPopup" @submit="handleSubmitCookie" />
+		</ClientOnly> -->
 	</div>
 </template>
 
 <script setup lang="ts"></script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.default {
+	width: 100%;
+	height: 100%;
+}
+</style>
