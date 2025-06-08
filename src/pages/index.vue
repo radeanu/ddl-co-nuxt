@@ -1,5 +1,8 @@
 <template>
-	<div class="page">Index page</div>
+	<div>
+		<!-- <IntroSection /> -->
+		<CalculatorSection />
+	</div>
 </template>
 
 <script setup lang="ts"></script>

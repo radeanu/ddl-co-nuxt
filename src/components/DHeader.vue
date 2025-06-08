@@ -39,12 +39,30 @@
 			<button type="button" class="btn-order d-flex-gte-768">
 				Оставить заявку
 			</button>
+
+			<button
+				class="btn-burger d-flex-lt-1024"
+				:class="{ opened: openMbMenu }"
+				@click="handleToggleMobileMenu"
+			>
+				<div class="d1" />
+				<div class="d2" />
+				<div class="d3" />
+			</button>
 		</div>
 	</header>
 </template>
 
 <script setup lang="ts">
 import { MENUS, CONTACTS } from '@/common/constants';
+const { togglePageOverflow } = useTogglePageOverflow();
+
+const openMbMenu = ref(false);
+
+function handleToggleMobileMenu() {
+	openMbMenu.value = !openMbMenu.value;
+	togglePageOverflow(!openMbMenu.value);
+}
 </script>
 
 <style lang="scss" scoped>
@@ -55,6 +73,10 @@ header {
 	height: 72px;
 	gap: 16px;
 	justify-content: space-between;
+	position: sticky;
+	top: 0;
+	z-index: var(--z-index-header);
+	background-color: #ffffff;
 }
 
 .logo {
@@ -99,6 +121,60 @@ header {
 		border-radius: 32px;
 		width: 212px;
 		height: 56px;
+	}
+
+	.btn-burger {
+		@include useFixedSize(48px, 48px);
+		background-color: #0132d7;
+		border-radius: 32px;
+		padding: 0;
+		display: flex;
+		position: relative;
+		align-items: start;
+		justify-content: start;
+
+		.d1,
+		.d2,
+		.d3 {
+			width: 18px;
+			height: 2px;
+			border-radius: 1.8px;
+			background-color: #ffffff;
+			position: absolute;
+			right: 15px;
+			left: auto;
+			transition: all 0.2s;
+			opacity: 1;
+			top: 0;
+		}
+
+		.d1 {
+			margin-top: 17px;
+		}
+
+		.d2 {
+			margin-top: 23px;
+		}
+
+		.d3 {
+			width: 13px;
+			margin-top: 29px;
+		}
+
+		&.opened {
+			.d1 {
+				margin-top: 23px;
+				transform: rotate(-45deg);
+			}
+
+			.d2 {
+				transform: rotate(45deg);
+			}
+
+			.d3 {
+				opacity: 0;
+			}
+		}
 	}
 }
 
