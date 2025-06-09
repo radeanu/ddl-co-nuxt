@@ -1,0 +1,59 @@
+@use '@/styles/_mixins.scss' as *;
+
+.input-wrapper {
+	position: relative;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 24px;
+}
+
+.input-col {
+	width: 100%;
+	height: 100%;
+}
+
+.input-row {
+	display: flex;
+	flex-wrap: nowrap;
+	gap: 15px;
+	align-items: center;
+	justify-content: space-between;
+	border-radius: 16px;
+	color: #6b7280;
+	border: 1px solid #8c8d9c;
+	background-color: #ffffff;
+	cursor: text;
+	height: 50px;
+
+	.input {
+		width: 100%;
+		height: 100%;
+		padding-left: 20px;
+		color: var(--color-gray950);
+	}
+
+	&:focus-within,
+	&:focus-visible {
+		border-color: #666774;
+	}
+	&.filled {
+		border-color: #666774;
+	}
+
+	&.invalid {
+		border-color: #e86262;
+	}
+
+	&.disabled {
+		pointer-events: none;
+		border-color: #9d9d9d;
+		color: #9d9d9d;
+	}
+}
+
+.input-error {
+	position: absolute;
+	color: #e86262;
+	top: 100%;
+	z-index: var(--z-index-input-error);
+}

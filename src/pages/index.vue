@@ -1,7 +1,8 @@
 <template>
 	<div>
 		<!-- <IntroSection /> -->
-		<CalculatorSection />
+		<!-- <CalculatorSection /> -->
+		<!-- <ServicesSection /> -->
 	</div>
 </template>
 

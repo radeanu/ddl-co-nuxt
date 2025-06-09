@@ -13,17 +13,4 @@
 section {
 	margin-top: 50px;
 }
-
-.title {
-	font-weight: 600;
-	font-size: 26px;
-	line-height: 32px;
-	letter-spacing: 0%;
-	color: #333436;
-	max-width: 266px;
-
-	.color {
-		color: #4b6efd;
-	}
-}
 </style>

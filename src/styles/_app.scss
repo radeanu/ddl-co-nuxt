@@ -81,6 +81,28 @@ button {
 	}
 }
 
+.section-title {
+	font-weight: 600;
+	font-size: 28px;
+	line-height: 32px;
+	color: #333436;
+
+	.color {
+		color: #4b6efd;
+	}
+
+	@include screen1024 {
+		font-weight: 500;
+		font-size: 48px;
+		line-height: 135%;
+	}
+
+	@include screen1440 {
+		font-size: 64px;
+		line-height: 135%;
+	}
+}
+
 @include mobile {
 	body {
 		font-size: 0.8889rem;
