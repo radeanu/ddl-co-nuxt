@@ -3,6 +3,7 @@
 		<!-- <IntroSection /> -->
 		<!-- <CalculatorSection /> -->
 		<!-- <ServicesSection /> -->
+		<StepsSection />
 	</div>
 </template>
 

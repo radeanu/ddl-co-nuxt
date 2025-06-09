@@ -70,3 +70,10 @@ export const SERVICES = [
 			'Вид уборки, который выполняется регулярно, обычно ежедневно или еженедельно. Она направлена на поддержание чистоты и порядка в помещении.'
 	}
 ];
+
+export const STEPS = [
+	{ name: 'Оставляете заявку', img: '/images/step-order.png' },
+	{ name: 'Консультация', img: '/images/step-help.png' },
+	{ name: 'Выполнение заказа', img: '/images/step-clean.png' },
+	{ name: 'Оплата', img: '/images/step-pay.png' }
+];

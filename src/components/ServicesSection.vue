@@ -67,7 +67,7 @@ const { handleSubmit, nameField, phoneField, validate } = useServiceOrderForm();
 
 <style lang="scss" scoped>
 section {
-	margin-top: 50px;
+	margin-top: 60px;
 	--btn-arrow-size: 35px;
 	--btn-arrow-gap: 6px;
 
