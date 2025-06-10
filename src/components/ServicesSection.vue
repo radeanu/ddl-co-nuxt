@@ -188,6 +188,7 @@ section {
 	line-height: 28px;
 	color: #2b2b2b;
 	margin-top: 50px;
+	white-space: pre-line;
 }
 
 .order-form {

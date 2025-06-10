@@ -1,5 +1,5 @@
 <template>
-	<div class="app">
+	<div>
 		<NuxtLoadingIndicator
 			:height="0"
 			:throttle="0"
