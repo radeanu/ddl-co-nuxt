@@ -93,13 +93,11 @@ ul {
 	margin-top: 24px;
 
 	li {
-		@include useFixedSize(154px, 157px);
+		@include useFont(tlgm);
+		@include useFixedSize(168px, 188px);
 		position: relative;
-		background-color: #f1f2f6;
+		background-color: #f0f3f5;
 		border-radius: 18px;
-		font-weight: 500;
-		font-size: 18px;
-		line-height: 120%;
 		color: #202027;
 		padding: 16px;
 
@@ -107,8 +105,8 @@ ul {
 			width: 88px;
 			height: 88px;
 			position: absolute;
-			bottom: 10px;
-			right: 10px;
+			bottom: 16px;
+			right: 16px;
 		}
 	}
 }

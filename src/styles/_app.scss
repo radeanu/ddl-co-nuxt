@@ -23,7 +23,8 @@ body {
 	font-weight: 500;
 }
 
-#__nuxt {
+#__nuxt,
+.app {
 	width: 100%;
 	height: 100%;
 }
@@ -82,9 +83,7 @@ button {
 }
 
 .section-title {
-	font-weight: 600;
-	font-size: 28px;
-	line-height: 32px;
+	@include useFont(dxssb);
 	color: #333436;
 
 	.color {
@@ -92,14 +91,11 @@ button {
 	}
 
 	@include screen1024 {
-		font-weight: 500;
-		font-size: 48px;
-		line-height: 135%;
+		@include useFont(dsmsb);
 	}
 
 	@include screen1440 {
-		font-size: 64px;
-		line-height: 135%;
+		@include useFont(dxlm);
 	}
 }
 
