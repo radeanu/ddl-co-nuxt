@@ -51,7 +51,7 @@ section {
 
 	h1 {
 		color: #1d1d1d;
-		font-weight: 700;
+		font-weight: 600;
 		font-size: 28px;
 		line-height: 40px;
 	}

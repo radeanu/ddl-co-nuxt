@@ -2,46 +2,40 @@
 
 .input-wrapper {
 	position: relative;
-	font-weight: 500;
-	font-size: 16px;
-	line-height: 24px;
-}
-
-.input-col {
-	width: 100%;
-	height: 100%;
+	@include useFont(tmdm);
 }
 
 .input-row {
 	display: flex;
 	flex-wrap: nowrap;
-	gap: 15px;
 	align-items: center;
 	justify-content: space-between;
-	border-radius: 16px;
-	color: #6b7280;
-	border: 1px solid #8c8d9c;
+	border-radius: 12px;
+	border: 1px solid #d9d9d9;
 	background-color: #ffffff;
 	cursor: text;
-	height: 50px;
+	height: 56px;
 
 	.input {
 		width: 100%;
 		height: 100%;
-		padding-left: 20px;
+		padding-inline: 20px 12px;
 		color: var(--color-gray950);
+
+		&::placeholder {
+			color: #a6a6a6;
+		}
 	}
 
-	&:focus-within,
-	&:focus-visible {
-		border-color: #666774;
-	}
 	&.filled {
-		border-color: #666774;
+		color: #1a1a1a;
+		border-color: #d9d9d9;
+		background-color: #f2f2f2;
 	}
 
 	&.invalid {
-		border-color: #e86262;
+		border-color: #ea0805;
+		background-color: #ffffff;
 	}
 
 	&.disabled {
@@ -49,11 +43,24 @@
 		border-color: #9d9d9d;
 		color: #9d9d9d;
 	}
+
+	&:hover,
+	&:focus-within,
+	&:focus-visible {
+		border-color: #bfbfbf;
+	}
+
+	&:focus-within,
+	&:focus-visible {
+		background-color: #eef3ff;
+		border-color: #638fff;
+	}
 }
 
 .input-error {
+	@include useFont(txsr);
 	position: absolute;
-	color: #e86262;
+	color: #ea0805;
 	top: 100%;
 	z-index: var(--z-index-input-error);
 }

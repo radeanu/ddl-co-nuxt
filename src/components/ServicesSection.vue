@@ -219,7 +219,7 @@ section {
 			background-color: #1d1d1d;
 			height: 56px;
 			border-radius: 32px;
-			font-weight: 700;
+			font-weight: 600;
 			font-size: 18px;
 			line-height: 24px;
 		}
@@ -284,7 +284,7 @@ section {
 
 		form {
 			.btn-submit {
-				font-weight: 700;
+				font-weight: 600;
 				font-size: 18px;
 				line-height: 24px;
 				width: fit-content;
