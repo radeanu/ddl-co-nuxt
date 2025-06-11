@@ -71,7 +71,7 @@ function runAnimation() {
 		}
 
 		activeIdx.value += 1;
-	}, 3000);
+	}, 1500);
 }
 </script>
 
@@ -111,15 +111,73 @@ ul {
 	}
 }
 
+@include screen768 {
+	ul {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		grid-template-rows: 188px;
+
+		li {
+			@include useFixedSize(100%, 100%);
+
+			&:nth-of-type(even) {
+				background-color: #ffffff;
+				border: 1px solid #d3dae0;
+			}
+
+			.img {
+				width: 120px;
+				height: 120px;
+			}
+		}
+	}
+}
+
 @include screen1024 {
 	.section-title {
 		max-width: 420px;
+	}
+
+	ul {
+		row-gap: 32px;
+		grid-template-rows: 220px;
+
+		li {
+			padding: 20px;
+			font-size: 22px;
+
+			.img {
+				width: 150px;
+				height: 150px;
+				bottom: 20px;
+				right: 20px;
+			}
+		}
+	}
+}
+
+@include screen1240 {
+	ul {
+		row-gap: 32px;
+		grid-template-rows: 250px;
+		column-gap: 32px;
 	}
 }
 
 @include screen1440 {
 	.section-title {
 		max-width: 578px;
+	}
+
+	ul {
+		grid-template-rows: 340px;
+
+		li {
+			.img {
+				width: 200px;
+				height: 200px;
+			}
+		}
 	}
 }
 </style>

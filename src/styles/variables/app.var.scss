@@ -9,9 +9,10 @@
 	--icon-color: inherit;
 
 	--z-index: 1;
-	--z-index-header: 4;
-	--z-index-mobile-menu: 3;
+	--z-index-header: 5;
+	--z-index-mobile-menu: 4;
 	--z-index-input-error: 2;
+	--z-index-dropdown-list: 3;
 }
 
 @include screen1900 {

@@ -135,3 +135,14 @@ export const PLACE_TYPES = [
 		name: 'Другая'
 	}
 ];
+
+export const OTHER_SERVICES = [
+	{ name: 'Чистка кухонной техники', value: 'cuh-tehnika' },
+	{ name: 'Мойка окон', value: 'okna' },
+	{ name: 'Убрать шерсть животных', value: 'shersti' },
+	{ name: 'Химчистка мягкой мебели', value: 'him-mebeli' },
+	{ name: 'Химчистка ковров', value: 'him-kovri' },
+	{ name: 'Стирка и глажка штор', value: 'stori' },
+	{ name: 'Уборка внутри шкафов', value: 'skafi' },
+	{ name: 'Удаление запахов в помещении', value: 'zapahi' }
+];

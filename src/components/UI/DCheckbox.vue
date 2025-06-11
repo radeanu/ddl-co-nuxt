@@ -1,6 +1,6 @@
 <template>
 	<label :class="classes">
-		<input v-model="model" :value type="checkbox" :disabled />
+		<input v-model="model" :value type="checkbox" :disabled :name />
 		<slot name="label" :value> {{ label }} </slot>
 	</label>
 </template>
@@ -8,6 +8,7 @@
 <script setup lang="ts" generic="T">
 export type DCheckbox<T> = {
 	value?: T;
+	name: string;
 	label?: string;
 	error?: string;
 	disabled?: boolean;
@@ -33,6 +34,7 @@ const classes = computed(() => {
 	gap: 12px;
 	color: #333333;
 	cursor: pointer;
+	width: fit-content;
 
 	input {
 		margin: 0;
@@ -42,8 +44,7 @@ const classes = computed(() => {
 		border-radius: 4px;
 		background-color: #fafafa;
 		border: 0.056rem solid #d9d9d9;
-		width: 20px;
-		height: 20px;
+		@include useFixedSize(20px, 20px);
 
 		&::before {
 			content: '';
