@@ -88,6 +88,10 @@ export default defineNuxtConfig({
 			}
 		]
 	},
+	plugins: [
+		'@/plugins/clickOutside.client.ts',
+		'@/plugins/clickOutside.server.ts'
+	],
 	router: {
 		options: {
 			scrollBehaviorType: 'smooth'

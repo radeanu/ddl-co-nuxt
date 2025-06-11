@@ -1,10 +1,12 @@
 <template>
-	<!-- <IntroSection /> -->
-	<CalculatorSection />
-	<!-- <ServicesSection /> -->
-	<!-- <StepsSection /> -->
-	<!-- <ContractSection /> -->
-	<!-- <FooterSection /> -->
+	<div>
+		<!-- <IntroSection /> -->
+		<CalculatorSection />
+		<!-- <ServicesSection /> -->
+		<!-- <StepsSection /> -->
+		<!-- <ContractSection /> -->
+		<!-- <FooterSection /> -->
+	</div>
 </template>
 
 <script setup lang="ts"></script>

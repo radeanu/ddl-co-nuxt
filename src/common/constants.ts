@@ -77,3 +77,61 @@ export const STEPS = [
 	{ name: 'Выполнение заказа', img: '/images/step-clean.png' },
 	{ name: 'Оплата', img: '/images/step-pay.png' }
 ];
+
+export const CLEANING_TYPES = [
+	{
+		value: 'express',
+		name: 'Срочная уборка'
+	},
+	{
+		value: 'poderj',
+		name: 'Поддерживающая'
+	},
+	{
+		value: 'remont',
+		name: 'После ремонта'
+	},
+	{
+		value: 'gen',
+		name: 'Генеральная'
+	},
+	{
+		value: 'zapushenie',
+		name: 'Запущенные'
+	},
+	{
+		value: 'himcistka',
+		name: 'Химчистка'
+	},
+	{
+		value: 'hipo',
+		name: 'Гипоаллергенная'
+	},
+	{
+		value: 'tuman',
+		name: 'Сухой туман'
+	}
+];
+
+export const PLACE_TYPES = [
+	{
+		value: 'kvartira',
+		name: 'Квартира'
+	},
+	{
+		value: 'dom',
+		name: 'Дом/Коттедж/Таунхаус/Дача'
+	},
+	{
+		value: 'office',
+		name: 'Офис'
+	},
+	{
+		value: 'targovii-centr',
+		name: 'Бизнес/Торговый центр'
+	},
+	{
+		value: 'other',
+		name: 'Другая'
+	}
+];
