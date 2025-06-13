@@ -8,8 +8,17 @@
 			</p>
 
 			<div class="btns">
-				<button type="button" class="btn1">Рассчитать стоимость</button>
-				<button type="button" class="btn2">Хочу сотрудничать</button>
+				<UIDLink to="/#calculator">
+					<button type="button" class="btn1">
+						Рассчитать стоимость
+					</button>
+				</UIDLink>
+
+				<UIDLink to="/#contract">
+					<button type="button" class="btn2">
+						Хочу сотрудничать
+					</button>
+				</UIDLink>
 			</div>
 
 			<NuxtImg

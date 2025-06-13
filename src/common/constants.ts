@@ -1,8 +1,9 @@
 export const MENUS = [
-	{ link: '/', label: 'Этапы работы' },
-	{ link: '/', label: 'Услуги' },
-	{ link: '/', label: 'Наши работы' },
-	{ link: '/', label: 'Контакты' }
+	{ link: '/#calculator', label: 'Калькулятор', header: false },
+	{ link: '/#services', label: 'Услуги', header: true },
+	{ link: '/#steps', label: 'Этапы работы', header: true },
+	// { link: '/', label: 'Наши работы' },
+	{ link: '/#contacts', label: 'Контакты', header: true }
 ];
 
 export const TEXT = {

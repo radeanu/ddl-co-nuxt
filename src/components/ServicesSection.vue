@@ -1,5 +1,5 @@
 <template>
-	<section class="layout-wrapper">
+	<section id="services" class="layout-wrapper">
 		<p class="section-title">
 			<span>Предоставляем</span>
 			<span class="color"> множество услуг</span>

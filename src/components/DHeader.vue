@@ -2,22 +2,21 @@
 	<header class="layout-wrapper">
 		<UIDIcon name="logo" class="logo" />
 
-		<nav class="d-block-gte-1240">
+		<nav class="d-block-gte-1024">
 			<ul>
-				<li>
-					<button type="button" class="location-toggle">
-						<UIDIcon name="pin" />
-						<span>Москва</span>
-					</button>
-				</li>
-				<li v-for="item in MENUS" :key="item.label">
+				<li v-for="item in menus" :key="item.label">
 					<UIDLink :to="item.link">{{ item.label }}</UIDLink>
 				</li>
 			</ul>
 		</nav>
 
 		<div class="right-side">
-			<div class="time">
+			<button type="button" class="location-toggle d-flex-gte-520">
+				<UIDIcon name="pin" />
+				<span>Москва</span>
+			</button>
+
+			<div class="time d-flex-gte-520">
 				<span>ПН -ВС: круглосуточно</span>
 				<UIDLink
 					:to="CONTACTS.phone.link"
@@ -30,13 +29,13 @@
 
 			<UIDLink
 				:to="CONTACTS.tg.link"
-				class="tg-link d-flex-gte-768"
+				class="tg-link d-flex-gte-1024"
 				target="_blank"
 			>
 				<UIDIcon name="tg" />
 			</UIDLink>
 
-			<button type="button" class="btn-order d-flex-gte-768">
+			<button type="button" class="btn-order d-flex-gte-1024">
 				Оставить заявку
 			</button>
 
@@ -50,6 +49,8 @@
 				<div class="d3" />
 			</button>
 		</div>
+
+		<MobileMenu v-if="openMbMenu" @close="handleToggleMobileMenu" />
 	</header>
 </template>
 
@@ -58,6 +59,8 @@ import { MENUS, CONTACTS } from '@/common/constants';
 const { togglePageOverflow } = useTogglePageOverflow();
 
 const openMbMenu = ref(false);
+
+const menus = MENUS.filter((m) => m.header);
 
 function handleToggleMobileMenu() {
 	openMbMenu.value = !openMbMenu.value;
@@ -102,7 +105,7 @@ header {
 		.phone {
 			font-weight: 600;
 			font-size: 18px;
-			color: #4b6efd;
+			color: #638fff;
 		}
 	}
 
@@ -112,7 +115,8 @@ header {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		background-color: #d5ddff;
+		background-color: #638fff;
+		color: #ffffff;
 	}
 
 	.btn-order {
@@ -124,8 +128,8 @@ header {
 	}
 
 	.btn-burger {
-		@include useFixedSize(48px, 48px);
-		background-color: #0132d7;
+		@include useFixedSize(44px, 44px);
+		background-color: #638fff;
 		border-radius: 32px;
 		padding: 0;
 		display: flex;
@@ -141,7 +145,7 @@ header {
 			border-radius: 1.8px;
 			background-color: #ffffff;
 			position: absolute;
-			right: 15px;
+			right: 13px;
 			left: auto;
 			transition: all 0.2s;
 			opacity: 1;
@@ -149,21 +153,21 @@ header {
 		}
 
 		.d1 {
-			margin-top: 17px;
+			margin-top: 14px;
 		}
 
 		.d2 {
-			margin-top: 23px;
+			margin-top: 20px;
 		}
 
 		.d3 {
 			width: 13px;
-			margin-top: 29px;
+			margin-top: 26px;
 		}
 
 		&.opened {
 			.d1 {
-				margin-top: 23px;
+				margin-top: 20px;
 				transform: rotate(-45deg);
 			}
 
@@ -178,40 +182,44 @@ header {
 	}
 }
 
-@include screen1240 {
+.location-toggle {
+	border-radius: 32px;
+	background-color: #ffffff;
+	color: #1a1a1a;
+	border: 1px solid #808080;
+	gap: 8px;
+	font-weight: 600;
+	font-size: 14px;
+	line-height: 20px;
+	padding: 0 16px;
+	height: 44px;
+
+	.icon {
+		color: #bfbfbf;
+	}
+}
+
+nav {
+	margin-left: auto;
+	margin-right: 100px;
+	font-size: 16px;
+
+	ul {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		gap: 16px;
+		align-items: center;
+
+		li {
+			color: #454545;
+		}
+	}
+}
+
+@include screen1024 {
 	nav {
-		margin-left: auto;
-		margin-right: 100px;
-		font-size: 16px;
-
-		ul {
-			display: flex;
-			flex-direction: row;
-			flex-wrap: nowrap;
-			gap: 16px;
-			align-items: center;
-
-			li {
-				color: #454545;
-			}
-		}
-
-		.location-toggle {
-			display: flex;
-			align-items: center;
-			flex-wrap: nowrap;
-			width: 100px;
-			height: 38px;
-			border-radius: 10px;
-			padding: 8px;
-			gap: 8px;
-			background-color: #f1f2f6;
-			color: #6e6f72;
-
-			.icon {
-				color: #cfd2dd;
-			}
-		}
+		margin-right: 30px;
 	}
 }
 
@@ -230,14 +238,6 @@ header {
 
 		ul {
 			gap: 20px;
-		}
-
-		.location-toggle {
-			width: 130px;
-			height: 48px;
-			border-radius: 10px;
-			padding: 12px;
-			gap: 10px;
 		}
 	}
 

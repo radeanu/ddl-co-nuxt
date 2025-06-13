@@ -1,5 +1,5 @@
 <template>
-	<section class="layout-wrapper">
+	<section id="steps" class="layout-wrapper">
 		<p class="section-title">
 			<span>На пути к чистоте всего</span>
 			<span class="color"> 4 шага</span>

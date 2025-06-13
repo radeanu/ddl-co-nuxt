@@ -1,5 +1,5 @@
 <template>
-	<section class="layout-wrapper">
+	<section id="calculator" class="layout-wrapper">
 		<p class="section-title">
 			<span>Рассчитайте</span>
 			<span class="color"> стоимость услуги</span>

@@ -1,5 +1,5 @@
 <template>
-	<footer class="layout-wrapper">
+	<footer id="contacts" class="layout-wrapper">
 		<div class="content">
 			<UIDIcon name="logo" />
 

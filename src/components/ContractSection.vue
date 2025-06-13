@@ -1,5 +1,5 @@
 <template>
-	<section class="layout-wrapper">
+	<section id="contract" class="layout-wrapper">
 		<div class="content">
 			<p class="title">Долгосрочные договора</p>
 
