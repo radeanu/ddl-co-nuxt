@@ -1,11 +1,11 @@
 <template>
 	<div>
-		<!-- <IntroSection />
+		<IntroSection />
 		<CalculatorSection />
-		<ServicesSection /> -->
+		<ServicesSection />
 		<StepsSection />
-		<!-- <ContractSection />
-		<FooterSection /> -->
+		<ContractSection />
+		<FooterSection />
 	</div>
 </template>
 
