@@ -196,7 +196,7 @@ section {
 	color: #ffffff;
 	border-radius: 20px;
 	margin-top: 26px;
-	background-color: #4b6efd;
+	background-color: #638fff;
 
 	.title {
 		font-weight: 600;
@@ -209,14 +209,14 @@ section {
 		margin-top: 24px;
 		display: flex;
 		flex-direction: column;
-		gap: 12px;
+		gap: 18px;
 
 		.btn-submit {
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			color: #ffffff;
-			background-color: #1d1d1d;
+			color: #1a1a1a;
+			background-color: #ffffff;
 			height: 56px;
 			border-radius: 32px;
 			font-weight: 600;

@@ -12,11 +12,11 @@ export const TEXT = {
 
 export const CONTACTS = {
 	phone: {
-		link: 'tel:89033373345',
-		label: '99-99-99'
+		link: 'tel:89290781517',
+		label: '8 929 078-15-17'
 	},
 	tg: {
-		link: 'https://t.me/APP73BOT',
+		link: 'https://t.me/ddlcleaning',
 		label: ''
 	}
 };

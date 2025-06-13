@@ -16,7 +16,7 @@
 				<span>Москва</span>
 			</button>
 
-			<div class="time d-flex-gte-520">
+			<div class="time">
 				<span>ПН -ВС: круглосуточно</span>
 				<UIDLink
 					:to="CONTACTS.phone.link"
