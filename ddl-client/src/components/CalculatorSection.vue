@@ -17,6 +17,7 @@
 						track-by="value"
 						placeholder="Вид уборки"
 						v-model="cleaningTypeField.value.value"
+						:max="1"
 						:options="CLEANING_TYPES"
 						:error="cleaningTypeField.errorMessage.value"
 					/>
@@ -25,6 +26,7 @@
 						name="place"
 						placeholder="Тип помещения"
 						track-by="value"
+						:max="1"
 						v-model="placeTypeField.value.value"
 						:options="PLACE_TYPES"
 						:error="placeTypeField.errorMessage.value"
@@ -105,13 +107,30 @@ import {
 
 import { useCalculatorForm } from '@/composables/useCalculatorForm';
 
+const runtimeConfig = useRuntimeConfig();
+
 const { validate, areaField, cleaningTypeField, otherField, placeTypeField } =
 	useCalculatorForm();
 
 async function handleSubmit() {
 	try {
 		const res = await validate();
-		console.log(res);
+		if (!res.valid) return;
+
+		await $fetch('/api/order', {
+			baseURL: runtimeConfig.public.API_URL,
+			method: 'POST',
+			body: {
+				cl_type: cleaningTypeField.value.value[0].name,
+				area_type: placeTypeField.value.value[0].name,
+				area: areaField.value.value,
+				phone: '+79033373345',
+				name: 'Vasile',
+				calc_sum: 12300,
+				comment: '',
+				services: otherField.value.value?.map((v) => v.name) ?? []
+			}
+		});
 	} catch (error) {
 		console.log(error);
 	}

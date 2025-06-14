@@ -1,0 +1,66 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "mysql"
+    url      = env("DATABASE_URL")
+}
+
+model Client {
+    id        Int      @id @default(autoincrement())
+    name      String
+    phone     String
+    tg_id     String?
+    address   String?
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    Order Order[]
+
+    @@map("client")
+}
+
+model Order {
+    id        Int      @id @default(autoincrement())
+    clientId  Int
+    cl_type   String
+    area_type String
+    area      Decimal
+    calc_sum  Decimal
+    comment   String?
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    OrderServices OrderServices[]
+
+    Client         Client           @relation(fields: [clientId], references: [id])
+    TgNotification TgNotification[]
+
+    @@map("order")
+}
+
+model OrderServices {
+    id        Int      @id @default(autoincrement())
+    name      String
+    orderId   Int
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    Order Order @relation(fields: [orderId], references: [id])
+
+    @@map("orderServices")
+}
+
+model TgNotification {
+    id        Int      @id @default(autoincrement())
+    orderId   Int
+    sent      Boolean  @default(false)
+    log       String?
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    Order Order @relation(fields: [orderId], references: [id])
+
+    @@map("tgNotification")
+}

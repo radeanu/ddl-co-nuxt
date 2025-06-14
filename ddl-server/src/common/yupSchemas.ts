@@ -5,5 +5,7 @@ export const envSchema = yup.object({
 		.string()
 		.oneOf(['development', 'production'])
 		.required('NODE_ENV not provided'),
-	BOT_TOKEN: yup.string().required('BOT_TOKEN not provided')
+	HOST: yup.string().trim().required(),
+	PORT: yup.number().integer().positive().required(),
+	DATABASE_URL: yup.string().trim().max(200).required()
 });

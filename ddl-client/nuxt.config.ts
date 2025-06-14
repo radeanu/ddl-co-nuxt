@@ -106,6 +106,7 @@ export default defineNuxtConfig({
 	runtimeConfig: {
 		public: {
 			YM_ID: process.env.YM_ID,
+			API_URL: process.env.API_URL,
 			NUXT_PUBLIC_SITE_URL: process.env.NUXT_PUBLIC_SITE_URL
 		}
 	}
