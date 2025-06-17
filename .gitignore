@@ -1,1 +1,11 @@
 ecosystem.config.js
+node_modules/
+
+
+# Nuxt dev/build outputs
+.output
+.data
+.nuxt
+.nitro
+.cache
+dist
