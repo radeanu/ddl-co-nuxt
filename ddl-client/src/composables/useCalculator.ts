@@ -19,9 +19,9 @@ export function useCalculator() {
 			? CLEANING_TYPES.find((v) => v.value === cl_type)
 			: null;
 
-		if (!value) return 0;
+		if (!value) return 1;
 
-		return value.price.coef;
+		return value.price.coef > 0 ? value.price.coef : 1;
 	}
 
 	function _getPlaceTypeCoef(place_type?: string) {
@@ -29,46 +29,38 @@ export function useCalculator() {
 			? PLACE_TYPES.find((v) => v.value === place_type)
 			: null;
 
-		if (!value) return 0;
+		if (!value) return 1;
 
-		return value.coef;
+		return value.coef > 0 ? value.coef : 1;
 	}
 
-	function _calcServicesType(services: string[]) {
-		let result = 0;
+	function _getServicesCoef(services: string[]) {
+		let coef = 0;
 
 		services.forEach((s) => {
 			const s_coef = OTHER_SERVICES.find((i) => i.value === s)?.coef ?? 0;
-			console.log({ s_coef });
-
-			result += s_coef * BASE_PRICE.service;
+			coef += s_coef;
 		});
 
-		return result;
+		return coef > 0 ? coef : 1;
 	}
 
 	async function calculate(values: Partial<Calculator>): Promise<number> {
 		return new Promise((resolve) => {
-			const target_place_type = values.area_type
-				? PLACE_TYPES.find((v) => v.value === values.area_type)
-				: null;
-
 			const area_val = values.area ?? 0;
 			const cl_type_coef = _getClTypeCoef(values.cl_type);
 			const place_coef = _getPlaceTypeCoef(values.area_type);
 
-			// const services_price = _calcServicesType(values.services ?? []);
+			const services_coef = _getServicesCoef(values.services ?? []);
 
-			console.log({
-				area_val,
-				cl_type_coef,
-				place_coef,
-				base: BASE_PRICE.area
-			});
+			const servicesTotal = values.services?.length
+				? (area_val / 2) * BASE_PRICE.service * services_coef
+				: 0;
 
-			const total = roundNumber(
-				area_val * BASE_PRICE.area * cl_type_coef * place_coef
-			);
+			const calcTotal =
+				area_val * BASE_PRICE.area * cl_type_coef * place_coef;
+
+			const total = roundNumber(servicesTotal + calcTotal);
 
 			resolve(total);
 		});

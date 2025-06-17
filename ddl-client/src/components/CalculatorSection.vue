@@ -98,6 +98,11 @@
 				</button>
 			</div>
 		</form>
+
+		<CalculatorSubmitModal
+			v-if="dSubmitModal"
+			@close="dSubmitModal = false"
+		/>
 	</section>
 </template>
 
@@ -115,6 +120,7 @@ const runtimeConfig = useRuntimeConfig();
 const { calculate } = useCalculator();
 
 const total = ref<number>(0);
+const dSubmitModal = ref(false);
 
 const { validate, areaField, cleaningTypeField, otherField, placeTypeField } =
 	useCalculatorForm();
@@ -134,23 +140,25 @@ watchEffect(async () => {
 
 async function handleSubmit() {
 	try {
-		const res = await validate();
-		if (!res.valid) return;
+		// const res = await validate();
+		// if (!res.valid) return;
 
-		await $fetch('/api/order', {
-			baseURL: runtimeConfig.public.API_URL,
-			method: 'POST',
-			body: {
-				cl_type: cleaningTypeField.value.value[0].name,
-				area_type: placeTypeField.value.value[0].name,
-				area: areaField.value.value,
-				phone: '+79033373345',
-				name: 'Vasile',
-				calc_sum: 12300,
-				comment: '',
-				services: otherField.value.value?.map((v) => v.name) ?? []
-			}
-		});
+		dSubmitModal.value = true;
+
+		// await $fetch('/api/order', {
+		// 	baseURL: runtimeConfig.public.API_URL,
+		// 	method: 'POST',
+		// 	body: {
+		// 		cl_type: cleaningTypeField.value.value[0].name,
+		// 		area_type: placeTypeField.value.value[0].name,
+		// 		area: areaField.value.value,
+		// 		phone: '+79033373345',
+		// 		name: 'Vasile',
+		// 		calc_sum: 12300,
+		// 		comment: '',
+		// 		services: otherField.value.value?.map((v) => v.name) ?? []
+		// 	}
+		// });
 	} catch (error) {
 		console.log(error);
 	}

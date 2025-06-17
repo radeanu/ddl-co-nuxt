@@ -1,7 +1,7 @@
 export const BASE_PRICE = {
 	unit: 300,
-	area: 120,
-	service: 800
+	area: 120, // 120 руб/кв
+	service: 60 // 60 руб/кв
 };
 
 export const MENUS = [
@@ -146,12 +146,12 @@ export const PLACE_TYPES = [
 ];
 
 export const OTHER_SERVICES = [
-	{ name: 'Чистка кухонной техники', value: 'cuh-tehnika', coef: 0.7 },
+	{ name: 'Чистка кухонной техники', value: 'cuh-tehnika', coef: 1.1 },
 	{ name: 'Мойка окон', value: 'okna', coef: 1.3 },
-	{ name: 'Убрать шерсть животных', value: 'shersti', coef: 0.5 },
-	{ name: 'Химчистка мягкой мебели', value: 'him-mebeli', coef: 0.7 },
+	{ name: 'Убрать шерсть животных', value: 'shersti', coef: 1.1 },
+	{ name: 'Химчистка мягкой мебели', value: 'him-mebeli', coef: 1.2 },
 	{ name: 'Химчистка ковров', value: 'him-kovri', coef: 1.2 },
-	{ name: 'Стирка и глажка штор', value: 'stori', coef: 0.5 },
-	{ name: 'Уборка внутри шкафов', value: 'skafi', coef: 0.5 },
-	{ name: 'Удаление запахов в помещении', value: 'zapahi', coef: 0.3 }
+	{ name: 'Стирка и глажка штор', value: 'stori', coef: 1.1 },
+	{ name: 'Уборка внутри шкафов', value: 'skafi', coef: 1.1 },
+	{ name: 'Удаление запахов в помещении', value: 'zapahi', coef: 1.1 }
 ];
