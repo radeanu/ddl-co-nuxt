@@ -140,8 +140,14 @@ function handleClickOption(opt: T) {
 function handleSelectOption(opt: T) {
 	if (reachedLimit.value) return;
 
-	model.value = [...model.value, opt];
+	const list = [...model.value, opt];
+
+	model.value = list;
 	$emit('select', JSON.parse(JSON.stringify(opt)));
+
+	if (list.length === props.max) {
+		toggleDisplayOptions();
+	}
 }
 
 function handleRemoveOption(opt: T) {

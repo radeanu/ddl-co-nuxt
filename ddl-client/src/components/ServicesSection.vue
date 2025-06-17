@@ -6,12 +6,12 @@
 		</p>
 
 		<ul>
-			<li v-for="item in SERVICES" :key="item.name" class="service">
+			<li v-for="item in services" :key="item.name" class="service">
 				<p class="name">{{ item.name }}</p>
 
 				<p class="price">
 					<UIDIcon name="pin" />
-					<span>{{ item.price }}</span>
+					<span> {{ item.price.label }} </span>
 				</p>
 
 				<p class="description d-block-gte-1024">
@@ -56,13 +56,26 @@
 </template>
 
 <script setup lang="ts">
-import { SERVICES } from '@/common/constants';
+import { CLEANING_TYPES, BASE_PRICE } from '@/common/constants';
 
 import { useServiceOrderForm } from '@/composables/useServiceOrderForm';
 
 const value = ref('');
 
 const { handleSubmit, nameField, phoneField, validate } = useServiceOrderForm();
+
+const services = CLEANING_TYPES.map((s) => {
+	const bse_price = s.price.unit ? BASE_PRICE.unit : BASE_PRICE.area;
+	const price_des = s.price.unit ? '/ед.' : '/м2';
+
+	return {
+		...s,
+		price: {
+			...s.price,
+			label: `от ${s.price.coef * bse_price} ₽ ${price_des}`
+		}
+	};
+});
 </script>
 
 <style lang="scss" scoped>

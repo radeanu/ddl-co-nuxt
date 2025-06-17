@@ -76,7 +76,10 @@
 				<div class="total">
 					<p class="total-amount">
 						<span>Итоговая стоимость</span>
-						<b class="amount">1000 ₽</b>
+						<b class="amount">
+							<span v-if="total > 0">{{ total }} ₽</span>
+							<span v-else>~</span>
+						</b>
 					</p>
 
 					<p class="total-hint">*Минимальная сумма заказа 3 500 ₽</p>
@@ -105,12 +108,29 @@ import {
 	OTHER_SERVICES
 } from '@/common/constants';
 
+import { useCalculator } from '@/composables/useCalculator';
 import { useCalculatorForm } from '@/composables/useCalculatorForm';
 
 const runtimeConfig = useRuntimeConfig();
+const { calculate } = useCalculator();
+
+const total = ref<number>(0);
 
 const { validate, areaField, cleaningTypeField, otherField, placeTypeField } =
 	useCalculatorForm();
+
+const payload = computed(() => {
+	return {
+		cl_type: cleaningTypeField.value?.value?.[0]?.value,
+		area_type: placeTypeField.value?.value?.[0]?.value,
+		area: areaField.value?.value,
+		services: otherField.value.value?.map((v) => v.value) ?? []
+	};
+});
+
+watchEffect(async () => {
+	total.value = await calculate(payload.value);
+});
 
 async function handleSubmit() {
 	try {
