@@ -7,62 +7,130 @@
 			</button>
 		</div>
 
-		<form @submit.prevent class="form">
-			<UIDInputText
-				name="name"
-				placeholder="Имя"
-				v-model="nameField.value.value"
-				:error="nameField.errorMessage.value"
-			/>
-
-			<UIDInputText
-				name="phone"
-				placeholder="Телефон"
-				v-model="phoneField.value.value"
-				:error="phoneField.errorMessage.value"
-			/>
-
-			<UIDInputTextarea
-				name="comment"
-				placeholder="Напишите комментарий"
-				v-model="commentField.value.value"
-				:error="commentField.errorMessage.value"
-				auto-resize
-				:rows="4"
-				:max-rows="10"
-			/>
-
-			<button
-				type="submit"
-				class="btn-submit focusable"
-				@click="handleSubmit"
-			>
-				Отправить
-			</button>
-		</form>
-
-		<p class="form__agreement">
-			Нажимая на кнопку, я соглашаюсь с политикой конфиденциальности
+		<p
+			v-if="submitResult.submitted && submitResult.success"
+			class="success"
+		>
+			{{ submitResult.message }}
 		</p>
+
+		<div v-else>
+			<form @submit.prevent class="form">
+				<UIDInputText
+					name="name"
+					placeholder="Имя"
+					v-model="nameField.value.value"
+					:error="nameField.errorMessage.value"
+				/>
+
+				<UIDInputText
+					name="phone"
+					placeholder="Телефон"
+					v-model="phoneField.value.value"
+					:error="phoneField.errorMessage.value"
+				/>
+
+				<UIDInputTextarea
+					name="comment"
+					placeholder="Напишите комментарий"
+					v-model="commentField.value.value"
+					:error="commentField.errorMessage.value"
+					auto-resize
+					:rows="4"
+					:max-rows="10"
+				/>
+
+				<p
+					class="error"
+					v-if="submitResult.submitted && !submitResult.success"
+				>
+					{{ submitResult.message }}
+				</p>
+
+				<button
+					type="submit"
+					class="btn-submit focusable"
+					@click="handleSubmit"
+					:disabled="loading.isLoading.value"
+				>
+					Отправить
+				</button>
+			</form>
+
+			<p class="form__agreement">
+				Нажимая на кнопку, я соглашаюсь с политикой конфиденциальности
+			</p>
+		</div>
 	</UIDModal>
 </template>
 
 <script setup lang="ts">
+import { API_RESPONSE } from '@/common/constants';
 import { useCalcSubmitForm } from '@/composables/useCalcSubmitForm';
 
-const { commentField, nameField, phoneField, validate } = useCalcSubmitForm();
+const props = defineProps<{
+	cl_type: string;
+	area_type: string;
+	area: number;
+	services: string[];
+	total: number;
+}>();
+
+const $emit = defineEmits(['close']);
+
+const loading = useLoadingIndicator();
+const runtimeConfig = useRuntimeConfig();
+const { commentField, nameField, phoneField, validate, handleReset } =
+	useCalcSubmitForm();
+
+const submitResult = ref({
+	submitted: false,
+	success: false,
+	message: ''
+});
 
 async function handleSubmit() {
 	try {
 		const res = await validate();
 		if (!res.valid) return;
-		const payload = {
-			name: nameField.value,
-			phone: phoneField.value,
-			comment: commentField.value
-		};
+
+		submitResult.value.submitted = false;
+
+		loading.start();
+
+		await $fetch('/api/order', {
+			baseURL: runtimeConfig.public.API_URL,
+			method: 'POST',
+			body: {
+				name: nameField.value.value,
+				phone: phoneField.value.value,
+				comment: commentField.value.value,
+				cl_type: props.cl_type,
+				area_type: props.area_type,
+				area: props.area,
+				calc_sum: props.total,
+				services: props.services
+			}
+		});
+
+		submitResult.value.submitted = true;
+		submitResult.value.success = true;
+		submitResult.value.message = API_RESPONSE.success;
 	} catch (error) {
-		console.log(error);
+		console.error(error);
+		submitResult.value.submitted = true;
+		submitResult.value.success = false;
+		submitResult.value.message = API_RESPONSE.error;
+	} finally {
+		loading.finish();
+
+		setTimeout(() => {
+			submitResult.value.submitted = false;
+
+			if (submitResult.value.success) {
+				handleReset();
+			}
+		}, 10000);
 	}
 }
 </script>
@@ -82,6 +150,7 @@ async function handleSubmit() {
 		border-top-left-radius: 20px;
 		border-top-right-radius: 20px;
 		padding: 18px 12px;
+		min-height: 250px;
 	}
 }
 
@@ -132,5 +201,16 @@ async function handleSubmit() {
 	font-weight: 400;
 	font-size: 12px;
 	line-height: 18px;
+}
+
+.error {
+	@include useFont(txsr);
+	color: #ea0805;
+}
+
+.success {
+	@include useFont(tmdr);
+	margin-top: 20px;
+	text-align: center;
 }
 </style>

@@ -25,7 +25,7 @@
 				</div>
 			</li>
 
-			<li class="order-form">
+			<li id="order" class="order-form">
 				<p class="title">
 					<span>Не нашли то что нужно? </span>
 					<span class="d-inline-lt-1024">Оставьте заявку.</span>
@@ -46,7 +46,15 @@
 						:error="phoneField.errorMessage.value"
 					/>
 
-					<button type="button" class="btn-submit">
+					<p v-if="submitResult.submitted" class="result">
+						{{ submitResult.message }}
+					</p>
+
+					<button
+						type="submit"
+						class="btn-submit"
+						@click="handleSubmit"
+					>
 						Оставить заявку
 					</button>
 				</form>
@@ -56,13 +64,13 @@
 </template>
 
 <script setup lang="ts">
-import { CLEANING_TYPES, BASE_PRICE } from '@/common/constants';
+import { CLEANING_TYPES, BASE_PRICE, API_RESPONSE } from '@/common/constants';
 
 import { useServiceOrderForm } from '@/composables/useServiceOrderForm';
 
-const value = ref('');
-
-const { handleSubmit, nameField, phoneField, validate } = useServiceOrderForm();
+const loading = useLoadingIndicator();
+const runtimeConfig = useRuntimeConfig();
+const { nameField, phoneField, validate, handleReset } = useServiceOrderForm();
 
 const services = CLEANING_TYPES.map((s) => {
 	const bse_price = s.price.unit ? BASE_PRICE.unit : BASE_PRICE.area;
@@ -76,6 +84,51 @@ const services = CLEANING_TYPES.map((s) => {
 		}
 	};
 });
+
+const submitResult = ref({
+	submitted: false,
+	success: false,
+	message: ''
+});
+
+async function handleSubmit() {
+	try {
+		const res = await validate();
+		if (!res.valid) return;
+
+		submitResult.value.submitted = false;
+
+		loading.start();
+
+		await $fetch('/api/order/call', {
+			baseURL: runtimeConfig.public.API_URL,
+			method: 'POST',
+			body: {
+				name: nameField.value.value,
+				phone: phoneField.value.value
+			}
+		});
+
+		submitResult.value.submitted = true;
+		submitResult.value.success = true;
+		submitResult.value.message = API_RESPONSE.success;
+	} catch (error) {
+		console.error(error);
+		submitResult.value.submitted = true;
+		submitResult.value.success = false;
+		submitResult.value.message = API_RESPONSE.error;
+	} finally {
+		loading.finish();
+
+		setTimeout(() => {
+			submitResult.value.submitted = false;
+
+			if (submitResult.value.success) {
+				handleReset();
+			}
+		}, 10000);
+	}
+}
 </script>
 
 <style lang="scss" scoped>
@@ -237,6 +290,10 @@ section {
 			line-height: 24px;
 		}
 	}
+}
+
+.result {
+	@include useFont(tmdr);
 }
 
 @include screen1024 {

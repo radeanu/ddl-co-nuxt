@@ -23,3 +23,8 @@ export const createOrder = yup.object({
 		.default([])
 		.typeError(MSG.error)
 });
+
+export const createOrderCall = yup.object({
+	name: yup.string().required(MSG.name).typeError(MSG.name),
+	phone: yup.string().required(MSG.phone).typeError(MSG.phone)
+});

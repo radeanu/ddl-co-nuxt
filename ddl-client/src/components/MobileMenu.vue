@@ -43,9 +43,11 @@
 					</div>
 				</div>
 
-				<button type="button" class="btn-order" @click="$emit('order')">
-					Оставить заявку
-				</button>
+				<UIDLink to="#order" class="btn-order">
+					<button type="button" @click="$emit('close')">
+						Оставить заявку
+					</button>
+				</UIDLink>
 
 				<UIDLink :to="CONTACTS.tg.link" class="tg-link" target="_blank">
 					<UIDIcon name="tg" />
@@ -180,6 +182,10 @@ nav {
 	font-weight: 600;
 	font-size: 14px;
 	line-height: 20px;
+	max-width: 100%;
+	align-items: center;
+	display: flex;
+	justify-content: center;
 }
 
 .tg-link {

@@ -16,7 +16,7 @@ const validationSchema = yup.object({
 });
 
 export function useCalcSubmitForm() {
-	const { validate } = useForm({
+	const { validate, handleReset } = useForm({
 		validationSchema
 	});
 
@@ -28,6 +28,7 @@ export function useCalcSubmitForm() {
 		validate,
 		nameField,
 		phoneField,
-		commentField
+		commentField,
+		handleReset
 	};
 }

@@ -14,7 +14,9 @@ const validationSchema = yup.object({
 });
 
 export function useServiceOrderForm() {
-	const { handleSubmit, validate } = useForm({ validationSchema });
+	const { handleSubmit, validate, handleReset } = useForm({
+		validationSchema
+	});
 
 	const nameField = useField<string>('name');
 	const phoneField = useField<string>('phone');
@@ -23,6 +25,7 @@ export function useServiceOrderForm() {
 		validate,
 		nameField,
 		phoneField,
-		handleSubmit
+		handleSubmit,
+		handleReset
 	};
 }

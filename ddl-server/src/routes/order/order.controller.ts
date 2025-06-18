@@ -35,3 +35,37 @@ export const postNewOrder: RequestHandler = (req, res, next) => {
 		return next(error);
 	});
 };
+
+export const postNewOrderCall: RequestHandler = (req, res, next) => {
+	(async () => {
+		const payload = await schema.createOrderCall.validate(
+			req.body,
+			validationOptions
+		);
+
+		const response = await service.createOrder(
+			{
+				cl_type: '',
+				area_type: '',
+				area: 0,
+				comment: '',
+				calc_sum: 0,
+				isCall: true
+			},
+			{
+				name: payload.name,
+				phone: payload.phone
+			},
+			[]
+		);
+
+		if (!response.success) {
+			return res.status(400).send(response.msg);
+		}
+
+		return res.status(200).send();
+	})().catch((error) => {
+		logger.error(error);
+		return next(error);
+	});
+};

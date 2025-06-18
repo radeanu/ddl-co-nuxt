@@ -8,7 +8,9 @@
 				Доверьте уборку профессионалам и наслаждайтесь комфортом!
 			</p>
 
-			<button class="btn-order">Оставить заявку</button>
+			<UIDLink to="#order" class="btn-order">
+				<button>Оставить заявку</button>
+			</UIDLink>
 
 			<ul>
 				<li v-for="item in list" :key="item">
@@ -79,6 +81,10 @@ section {
 	font-weight: 600;
 	font-size: 16px;
 	line-height: 24px;
+	max-width: 100%;
+	align-items: center;
+	display: flex;
+	justify-content: center;
 }
 
 ul {

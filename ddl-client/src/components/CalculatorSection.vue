@@ -101,6 +101,8 @@
 
 		<CalculatorSubmitModal
 			v-if="dSubmitModal"
+			v-bind="payload"
+			:total
 			@close="dSubmitModal = false"
 		/>
 	</section>
@@ -116,7 +118,6 @@ import {
 import { useCalculator } from '@/composables/useCalculator';
 import { useCalculatorForm } from '@/composables/useCalculatorForm';
 
-const runtimeConfig = useRuntimeConfig();
 const { calculate } = useCalculator();
 
 const total = ref<number>(0);
@@ -139,29 +140,10 @@ watchEffect(async () => {
 });
 
 async function handleSubmit() {
-	try {
-		// const res = await validate();
-		// if (!res.valid) return;
+	const res = await validate();
+	if (!res.valid) return;
 
-		dSubmitModal.value = true;
-
-		// await $fetch('/api/order', {
-		// 	baseURL: runtimeConfig.public.API_URL,
-		// 	method: 'POST',
-		// 	body: {
-		// 		cl_type: cleaningTypeField.value.value[0].name,
-		// 		area_type: placeTypeField.value.value[0].name,
-		// 		area: areaField.value.value,
-		// 		phone: '+79033373345',
-		// 		name: 'Vasile',
-		// 		calc_sum: 12300,
-		// 		comment: '',
-		// 		services: otherField.value.value?.map((v) => v.name) ?? []
-		// 	}
-		// });
-	} catch (error) {
-		console.log(error);
-	}
+	dSubmitModal.value = true;
 }
 </script>
 

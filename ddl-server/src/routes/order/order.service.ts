@@ -27,7 +27,8 @@ export async function createOrder(
 					area: order.area,
 					calc_sum: order.calc_sum,
 					comment: order.comment,
-					clientId: newClientId
+					clientId: newClientId,
+					isCall: order.isCall
 				}
 			});
 
@@ -46,6 +47,7 @@ export async function createOrder(
 
 			return { success: true, msg: '' };
 		} catch (error) {
+			console.log(error);
 			return { success: false, msg: 'Ошибка при создании заявки' };
 		}
 	});
