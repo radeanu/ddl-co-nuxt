@@ -14,13 +14,29 @@ const taskRunner = cron.createTask('* * * * * *', handleNewNotifications, {
 	noOverlap: true
 });
 
-async function sendNotification(chatId: string | number, message: string) {
+async function sendNotification(message: string) {
 	try {
-		const res = await bot.telegram.sendMessage(chatId, message, {
-			parse_mode: 'HTML'
-		});
+		const tg_ids = env.ADMIN_TG_ID.split(',');
+
+		await Promise.allSettled(
+			tg_ids.map(async (chatId) => {
+				try {
+					await bot.telegram.sendMessage(chatId, message, {
+						parse_mode: 'HTML'
+					});
+					return;
+				} catch (e) {
+					logger.error({
+						title: 'sendNotification: sendMessage',
+						error: e
+					});
+					return;
+				}
+			})
+		);
+
 		await waitFor(1000);
-		return { success: !!res?.message_id, msg: '' };
+		return { success: true, msg: '' };
 	} catch (error) {
 		logger.error({ title: 'sendNotification', error });
 		return { success: false, msg: 'Error' };
@@ -49,7 +65,7 @@ async function handleNewNotifications() {
 			.filter(Boolean)
 			.join('\n');
 
-		const res = await sendNotification(env.ADMIN_TG_ID, messages);
+		const res = await sendNotification(messages);
 		const log = res.success ? '' : res.msg;
 
 		await updateNotification(item.id, res.success, log);
