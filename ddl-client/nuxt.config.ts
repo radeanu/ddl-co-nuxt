@@ -44,17 +44,17 @@ export default defineNuxtConfig({
 		'@nuxt/eslint',
 		'@nuxt/icon',
 		'@nuxt/image',
-		'@nuxtjs/seo'
-		// [
-		// 	'yandex-metrika-module-nuxt3',
-		// 	{
-		// 		id: process.env.YM_ID,
-		// 		clickmap: true,
-		// 		trackLinks: true,
-		// 		accurateTrackBounce: true,
-		// 		webvisor: true
-		// 	}
-		// ]
+		'@nuxtjs/seo',
+		[
+			'yandex-metrika-module-nuxt3',
+			{
+				id: process.env.YM_ID,
+				clickmap: true,
+				trackLinks: true,
+				accurateTrackBounce: true,
+				webvisor: true
+			}
+		]
 	],
 	image: {
 		provider: 'ipx',
