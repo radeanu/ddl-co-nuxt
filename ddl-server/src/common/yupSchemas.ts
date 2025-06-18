@@ -6,6 +6,7 @@ export const envSchema = yup.object({
 		.oneOf(['development', 'production'])
 		.required('NODE_ENV not provided'),
 	HOST: yup.string().trim().required(),
+	CORS: yup.string().trim().required(),
 	PORT: yup.number().integer().positive().required(),
 	DATABASE_URL: yup.string().trim().max(200).required()
 });
