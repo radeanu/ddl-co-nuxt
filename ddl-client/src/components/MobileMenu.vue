@@ -36,6 +36,7 @@
 							:to="CONTACTS.phone.link"
 							target="_blank"
 							class="phone"
+							@click="ymTriggers.hitPhoneClick()"
 						>
 							{{ CONTACTS.phone.label }}
 						</UIDLink>
@@ -49,7 +50,12 @@
 					</button>
 				</UIDLink>
 
-				<UIDLink :to="CONTACTS.tg.link" class="tg-link" target="_blank">
+				<UIDLink
+					:to="CONTACTS.tg.link"
+					class="tg-link"
+					target="_blank"
+					@click="ymTriggers.hitGoToTG()"
+				>
 					<UIDIcon name="tg" />
 					<span>Написать</span>
 				</UIDLink>
@@ -60,11 +66,14 @@
 
 <script setup lang="ts">
 import { MENUS, CONTACTS } from '@/common/constants';
+import useYmTriggers from '@/composables/useYmTriggers';
 
 const $emit = defineEmits<{
 	(e: 'close'): void;
 	(e: 'order'): void;
 }>();
+
+const ymTriggers = useYmTriggers();
 </script>
 
 <style lang="scss" scoped>

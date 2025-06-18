@@ -64,10 +64,11 @@
 </template>
 
 <script setup lang="ts">
+import useYmTriggers from '@/composables/useYmTriggers';
+import { useServiceOrderForm } from '@/composables/useServiceOrderForm';
 import { CLEANING_TYPES, BASE_PRICE, API_RESPONSE } from '@/common/constants';
 
-import { useServiceOrderForm } from '@/composables/useServiceOrderForm';
-
+const ymTriggers = useYmTriggers();
 const loading = useLoadingIndicator();
 const runtimeConfig = useRuntimeConfig();
 const { nameField, phoneField, validate, handleReset } = useServiceOrderForm();
@@ -108,6 +109,8 @@ async function handleSubmit() {
 				phone: phoneField.value.value
 			}
 		});
+
+		ymTriggers.hitNewOrderCall();
 
 		submitResult.value.submitted = true;
 		submitResult.value.success = true;

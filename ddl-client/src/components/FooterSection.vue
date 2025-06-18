@@ -8,6 +8,7 @@
 					:to="CONTACTS.phone.link"
 					class="link-phone"
 					target="_blank"
+					@click="ymTriggers.hitPhoneClick()"
 				>
 					<span>Телефон:</span>
 					<span class="label">{{ CONTACTS.phone.label }}</span>
@@ -22,7 +23,12 @@
 					/>
 				</UIDLink>
 
-				<UIDLink :to="CONTACTS.tg.link" class="link-tg" target="_blank">
+				<UIDLink
+					:to="CONTACTS.tg.link"
+					class="link-tg"
+					target="_blank"
+					@click="ymTriggers.hitGoToTG()"
+				>
 					<span>Мы в Telegram</span>
 					<span class="label">Перейти</span>
 
@@ -58,6 +64,9 @@
 
 <script setup lang="ts">
 import { CONTACTS } from '@/common/constants';
+import useYmTriggers from '@/composables/useYmTriggers';
+
+const ymTriggers = useYmTriggers();
 </script>
 
 <style lang="scss" scoped>

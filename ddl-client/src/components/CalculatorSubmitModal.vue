@@ -66,6 +66,7 @@
 
 <script setup lang="ts">
 import { API_RESPONSE } from '@/common/constants';
+import useYmTriggers from '@/composables/useYmTriggers';
 import { useCalcSubmitForm } from '@/composables/useCalcSubmitForm';
 
 const props = defineProps<{
@@ -78,6 +79,7 @@ const props = defineProps<{
 
 const $emit = defineEmits(['close']);
 
+const ymTriggers = useYmTriggers();
 const loading = useLoadingIndicator();
 const runtimeConfig = useRuntimeConfig();
 const { commentField, nameField, phoneField, validate, handleReset } =
@@ -112,6 +114,8 @@ async function handleSubmit() {
 				services: props.services
 			}
 		});
+
+		ymTriggers.hitNewOrder();
 
 		submitResult.value.submitted = true;
 		submitResult.value.success = true;

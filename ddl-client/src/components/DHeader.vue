@@ -22,6 +22,7 @@
 					:to="CONTACTS.phone.link"
 					target="_blank"
 					class="phone"
+					@click="ymTriggers.hitPhoneClick()"
 				>
 					{{ CONTACTS.phone.label }}
 				</UIDLink>
@@ -31,6 +32,7 @@
 				:to="CONTACTS.tg.link"
 				class="tg-link d-flex-gte-1024"
 				target="_blank"
+				@click="ymTriggers.hitGoToTG()"
 			>
 				<UIDIcon name="tg" />
 			</UIDLink>
@@ -55,7 +57,10 @@
 </template>
 
 <script setup lang="ts">
+import useYmTriggers from '@/composables/useYmTriggers';
 import { MENUS, CONTACTS } from '@/common/constants';
+
+const ymTriggers = useYmTriggers();
 const { togglePageOverflow } = useTogglePageOverflow();
 
 const openMbMenu = ref(false);
