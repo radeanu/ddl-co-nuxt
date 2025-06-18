@@ -57,6 +57,10 @@ async function handleNewNotifications() {
 			item.Order.OrderServices.length
 				? `<b>Дополнительные услуги:</b> ${item.Order.OrderServices.map((s) => s.name).join(', ')}`
 				: false,
+			`<b>Комментарий:</b> ${item.Order.comment ?? '-'}`,
+			item.Order.OrderServices.length
+				? `<b>Дополнительные услуги:</b> ${item.Order.OrderServices.map((s) => s.name).join(', ')}`
+				: false,
 			`💲 ${item.Order.calc_sum} ₽`,
 			`👤 ${item.Order.Client.name}`,
 			`☎️ ${item.Order.Client.phone}`,
