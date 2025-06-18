@@ -30,13 +30,7 @@
 		</div>
 
 		<div class="right">
-			<NuxtImg
-				class="img"
-				src="/images/cleaning.png"
-				alt="Фон"
-				loading="lazy"
-				decoding="async"
-			/>
+			<NuxtImg class="img" src="/images/cleaning.png" alt="Фон" preload />
 		</div>
 	</section>
 </template>
