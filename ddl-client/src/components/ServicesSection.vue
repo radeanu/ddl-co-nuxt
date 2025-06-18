@@ -19,7 +19,11 @@
 				</p>
 
 				<div class="btn-wrapper">
-					<button class="btn-arrow" type="button">
+					<button
+						class="btn-arrow"
+						type="button"
+						aria-label="Узнать больше"
+					>
 						<UIDIcon name="arrow-up-right" />
 					</button>
 				</div>

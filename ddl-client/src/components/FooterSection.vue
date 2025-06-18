@@ -20,6 +20,7 @@
 						height="111"
 						loading="lazy"
 						decoding="async"
+						alt="Телефон"
 					/>
 				</UIDLink>
 
@@ -35,6 +36,7 @@
 					<NuxtImg
 						src="/images/tg-qr.png"
 						class="img"
+						alt="Телеграм"
 						width="69"
 						height="69"
 						loading="lazy"
@@ -56,6 +58,7 @@
 				fit="contain"
 				loading="lazy"
 				decoding="async"
+				alt="Фон"
 				class="bg-img d-block-lte-768"
 			/>
 		</div>

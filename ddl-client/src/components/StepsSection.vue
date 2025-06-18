@@ -13,6 +13,7 @@
 					:src="step.img"
 					loading="lazy"
 					decoding="async"
+					:alt="'Этап' + step.name"
 					class="img"
 				/>
 			</li>

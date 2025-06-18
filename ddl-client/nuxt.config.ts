@@ -38,6 +38,18 @@ export default defineNuxtConfig({
 		},
 		pageTransition: { name: 'page', mode: 'out-in' }
 	},
+	$production: {
+		app: {
+			head: {
+				meta: [
+					{
+						name: 'yandex-verification',
+						content: '8c276e7366b6ea2f'
+					}
+				]
+			}
+		}
+	},
 	compatibilityDate: '2025-05-15',
 	devtools: { enabled: false },
 	modules: [

@@ -44,6 +44,7 @@
 			<button
 				class="btn-burger d-flex-lt-1024"
 				:class="{ opened: openMbMenu }"
+				aria-label="Открыть меню"
 				@click="handleToggleMobileMenu"
 			>
 				<div class="d1" />
