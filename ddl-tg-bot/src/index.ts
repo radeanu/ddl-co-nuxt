@@ -28,6 +28,7 @@ async function sendNotification(message: string) {
 				} catch (e) {
 					logger.error({
 						title: 'sendNotification: sendMessage',
+						chatId,
 						error: e
 					});
 					return;
