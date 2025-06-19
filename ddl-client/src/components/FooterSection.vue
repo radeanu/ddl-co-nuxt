@@ -62,6 +62,17 @@
 				class="bg-img d-block-lte-768"
 			/>
 		</div>
+
+		<a href="https://webmaster.yandex.ru/siteinfo/?site=ddl-99.ru">
+			<img
+				width="88"
+				height="31"
+				alt=""
+				border="0"
+				border-radius="8"
+				src="https://yandex.ru/cycounter?ddl-99.ru&theme=light&lang=ru"
+			/>
+		</a>
 	</footer>
 </template>
 
