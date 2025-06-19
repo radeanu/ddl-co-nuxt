@@ -52,22 +52,7 @@ export default defineNuxtConfig({
 	},
 	compatibilityDate: '2025-05-15',
 	devtools: { enabled: false },
-	modules: [
-		'@nuxt/eslint',
-		'@nuxt/icon',
-		'@nuxt/image',
-		'@nuxtjs/seo',
-		[
-			'yandex-metrika-module-nuxt3',
-			{
-				id: process.env.YM_ID,
-				clickmap: true,
-				trackLinks: true,
-				accurateTrackBounce: true,
-				webvisor: true
-			}
-		]
-	],
+	modules: ['@nuxt/eslint', '@nuxt/icon', '@nuxt/image', '@nuxtjs/seo'],
 	image: {
 		provider: 'ipx',
 		ipx: {
@@ -101,6 +86,7 @@ export default defineNuxtConfig({
 		]
 	},
 	plugins: [
+		{ src: '@/plugins/metrika.client.ts', mode: 'client' },
 		'@/plugins/clickOutside.client.ts',
 		'@/plugins/clickOutside.server.ts'
 	],
