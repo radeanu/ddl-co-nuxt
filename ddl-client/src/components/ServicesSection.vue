@@ -69,9 +69,11 @@
 
 <script setup lang="ts">
 import useYmTriggers from '@/composables/useYmTriggers';
+import { useLocalStorage } from '@/composables/useLocalStorage';
 import { useServiceOrderForm } from '@/composables/useServiceOrderForm';
 import { CLEANING_TYPES, BASE_PRICE, API_RESPONSE } from '@/common/constants';
 
+const storage = useLocalStorage();
 const ymTriggers = useYmTriggers();
 const loading = useLoadingIndicator();
 const runtimeConfig = useRuntimeConfig();
@@ -105,10 +107,13 @@ async function handleSubmit() {
 
 		loading.start();
 
+		const location = storage.getItem('loc');
+
 		await $fetch('/api/order/call', {
 			baseURL: runtimeConfig.public.API_URL,
 			method: 'POST',
 			body: {
+				location,
 				name: nameField.value.value,
 				phone: phoneField.value.value
 			}

@@ -16,7 +16,8 @@ export const postNewOrder: RequestHandler = (req, res, next) => {
 				area_type: payload.area_type,
 				area: payload.area,
 				comment: payload.comment,
-				calc_sum: payload.calc_sum
+				calc_sum: payload.calc_sum,
+				location: payload.location
 			},
 			{
 				name: payload.name,
@@ -50,7 +51,8 @@ export const postNewOrderCall: RequestHandler = (req, res, next) => {
 				area: 0,
 				comment: '',
 				calc_sum: 0,
-				isCall: true
+				isCall: true,
+				location: payload.location
 			},
 			{
 				name: payload.name,

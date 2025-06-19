@@ -26,10 +26,7 @@
 				</nav>
 
 				<div class="meta">
-					<button type="button" class="location-toggle">
-						<UIDIcon name="pin" />
-						<span>Москва</span>
-					</button>
+					<LocationSelect />
 
 					<div class="time">
 						<UIDLink
@@ -146,23 +143,6 @@ nav {
 	margin-top: 20px;
 	padding-bottom: 20px;
 	border-bottom: 1px solid #b5c2cc;
-}
-
-.location-toggle {
-	border-radius: 32px;
-	background-color: #ffffff;
-	color: #1a1a1a;
-	border: 1px solid #808080;
-	gap: 8px;
-	font-weight: 600;
-	font-size: 14px;
-	line-height: 20px;
-	padding: 0 16px;
-	height: 44px;
-
-	.icon {
-		color: #bfbfbf;
-	}
 }
 
 .time {

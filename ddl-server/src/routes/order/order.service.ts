@@ -28,7 +28,8 @@ export async function createOrder(
 					calc_sum: order.calc_sum,
 					comment: order.comment,
 					clientId: newClientId,
-					isCall: order.isCall
+					isCall: order.isCall,
+					location: order.location
 				}
 			});
 

@@ -145,3 +145,18 @@ export const OTHER_SERVICES = [
 	{ name: 'Уборка внутри шкафов', value: 'skafi', coef: 1.1 },
 	{ name: 'Удаление запахов в помещении', value: 'zapahi', coef: 1.1 }
 ];
+
+export const LOCATIONS = [
+	{
+		name: 'Москва',
+		value: 'moscow'
+	},
+	{
+		name: 'Ярославль',
+		value: 'yaroslavl'
+	},
+	{
+		name: 'Херсон',
+		value: 'herson'
+	}
+];

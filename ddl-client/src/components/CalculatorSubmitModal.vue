@@ -67,6 +67,7 @@
 <script setup lang="ts">
 import { API_RESPONSE } from '@/common/constants';
 import useYmTriggers from '@/composables/useYmTriggers';
+import { useLocalStorage } from '@/composables/useLocalStorage';
 import { useCalcSubmitForm } from '@/composables/useCalcSubmitForm';
 
 const props = defineProps<{
@@ -79,6 +80,7 @@ const props = defineProps<{
 
 const $emit = defineEmits(['close']);
 
+const storage = useLocalStorage();
 const ymTriggers = useYmTriggers();
 const loading = useLoadingIndicator();
 const runtimeConfig = useRuntimeConfig();
@@ -100,10 +102,13 @@ async function handleSubmit() {
 
 		loading.start();
 
+		const location = storage.getItem('loc');
+
 		await $fetch('/api/order', {
 			baseURL: runtimeConfig.public.API_URL,
 			method: 'POST',
 			body: {
+				location,
 				name: nameField.value.value,
 				phone: phoneField.value.value,
 				comment: commentField.value.value,

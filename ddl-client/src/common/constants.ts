@@ -167,3 +167,18 @@ export const SEO = {
 	description:
 		'Предлагаем профессиональные услуги по уборке жилых и коммерческих помещений.'
 };
+
+export const LOCATIONS = [
+	{
+		name: 'Москва',
+		value: 'moscow'
+	},
+	{
+		name: 'Ярославль',
+		value: 'yaroslavl'
+	},
+	{
+		name: 'Херсон',
+		value: 'herson'
+	}
+];

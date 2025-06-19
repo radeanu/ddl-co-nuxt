@@ -1,20 +1,19 @@
 <template>
 	<header class="layout-wrapper">
-		<UIDIcon name="logo" class="logo" />
+		<div class="left-side">
+			<UIDIcon name="logo" class="logo" />
 
-		<nav class="d-block-gte-1024">
-			<ul>
-				<li v-for="item in menus" :key="item.label">
-					<UIDLink :to="item.link">{{ item.label }}</UIDLink>
-				</li>
-			</ul>
-		</nav>
+			<nav class="d-block-gte-1024">
+				<ul>
+					<li v-for="item in menus" :key="item.label">
+						<UIDLink :to="item.link">{{ item.label }}</UIDLink>
+					</li>
+				</ul>
+			</nav>
+		</div>
 
 		<div class="right-side">
-			<button type="button" class="location-toggle d-flex-gte-520">
-				<UIDIcon name="pin" />
-				<span>Москва</span>
-			</button>
+			<LocationSelect class="d-flex-gte-520" />
 
 			<div class="time">
 				<span>ПН -ВС: круглосуточно</span>
@@ -91,6 +90,13 @@ header {
 .logo {
 	--icon-width: 80px;
 	--icon-height: 32px;
+}
+
+.left-side {
+	display: flex;
+	align-items: center;
+	flex-wrap: nowrap;
+	gap: 350px;
 }
 
 .right-side {
@@ -188,26 +194,7 @@ header {
 	}
 }
 
-.location-toggle {
-	border-radius: 32px;
-	background-color: #ffffff;
-	color: #1a1a1a;
-	border: 1px solid #808080;
-	gap: 8px;
-	font-weight: 600;
-	font-size: 14px;
-	line-height: 20px;
-	padding: 0 16px;
-	height: 44px;
-
-	.icon {
-		color: #bfbfbf;
-	}
-}
-
 nav {
-	margin-left: auto;
-	margin-right: 100px;
 	font-size: 16px;
 
 	ul {
@@ -224,8 +211,14 @@ nav {
 }
 
 @include screen1024 {
-	nav {
-		margin-right: 30px;
+	.left-side {
+		gap: 20px;
+	}
+}
+
+@include screen1240 {
+	.left-side {
+		gap: 150px;
 	}
 }
 
@@ -261,9 +254,11 @@ nav {
 }
 
 @include screen1900 {
-	nav {
-		margin-right: 261px;
+	.left-side {
+		gap: 350px;
+	}
 
+	nav {
 		ul {
 			gap: 40px;
 		}

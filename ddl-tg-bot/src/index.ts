@@ -5,7 +5,7 @@ import { Scenes, Telegraf, session } from 'telegraf';
 import commands from '@/commands/index.js';
 import { env, logger } from '@/config/index.js';
 import type { CommandHandler, MyContext } from '@/common/types.js';
-import { LABELS, MENU_COMMANDS, waitFor } from '@/common/index.js';
+import { LABELS, LOCATIONS, MENU_COMMANDS, waitFor } from '@/common/index.js';
 
 import { getNewNotifications, updateNotification } from '@/db/index.js';
 
@@ -50,6 +50,8 @@ async function handleNewNotifications() {
 	if (!newNotifications.length) return;
 
 	for await (const item of newNotifications) {
+		const locValue = LOCATIONS.find((l) => l.value === item.Order.location);
+
 		const messages = [
 			`<b>⭐ Новая заявка, № ${item.orderId}\n</b>`,
 			`<b>Вид уборки:</b> ${item.Order.cl_type}`,
@@ -58,10 +60,11 @@ async function handleNewNotifications() {
 			item.Order.OrderServices.length
 				? `<b>Дополнительные услуги:</b> ${item.Order.OrderServices.map((s) => s.name).join(', ')}`
 				: false,
-			`<b>Комментарий:</b> ${item.Order.comment ?? '-'}`,
+			`<b>Комментарий:</b> ${item.Order.comment ?? '-'}\n`,
 			item.Order.OrderServices.length
 				? `<b>Дополнительные услуги:</b> ${item.Order.OrderServices.map((s) => s.name).join(', ')}`
 				: false,
+			`📍Город: ${locValue?.name ?? LOCATIONS[0].name}`,
 			`💲 ${item.Order.calc_sum} ₽`,
 			`👤 ${item.Order.Client.name}`,
 			`☎️ ${item.Order.Client.phone}`,

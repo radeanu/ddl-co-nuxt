@@ -25,6 +25,7 @@ model Order {
     id        Int      @id @default(autoincrement())
     clientId  Int
     isCall    Boolean  @default(false)
+    location  String   @default("moscow")
     cl_type   String
     area_type String
     area      Decimal
