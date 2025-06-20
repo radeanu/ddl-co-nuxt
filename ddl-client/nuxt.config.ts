@@ -32,9 +32,6 @@ export default defineNuxtConfig({
 		baseURL: '/',
 		head: {
 			title: 'DDL - клининговая компания',
-			htmlAttrs: {
-				lang: 'ru'
-			},
 			charset: 'utf-8',
 			viewport: 'width=device-width, initial-scale=1',
 			meta: [
