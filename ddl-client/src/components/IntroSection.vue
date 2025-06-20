@@ -2,10 +2,10 @@
 	<section class="layout-wrapper">
 		<div class="left">
 			<h1>Профессиональный клининг помещений</h1>
-			<p>
+			<h2>
 				Предлагаем профессиональные услуги по уборке жилых и
 				коммерческих помещений.
-			</p>
+			</h2>
 
 			<div class="btns">
 				<UIDLink to="/#calculator">
@@ -26,6 +26,7 @@
 				fit="contain"
 				loading="lazy"
 				decoding="async"
+				alt="Фон"
 			/>
 		</div>
 
@@ -60,7 +61,7 @@ section {
 		line-height: 40px;
 	}
 
-	p {
+	h2 {
 		margin-top: 20px;
 		font-weight: 500;
 		font-size: 16px;
@@ -135,7 +136,7 @@ section {
 			margin-top: 41px;
 		}
 
-		p {
+		h2 {
 			margin-top: 20px;
 		}
 
@@ -165,7 +166,7 @@ section {
 			line-height: 120%;
 		}
 
-		p {
+		h2 {
 			font-size: 22px;
 		}
 
@@ -205,7 +206,7 @@ section {
 			font-size: 72px;
 		}
 
-		p {
+		h2 {
 			font-size: 24px;
 		}
 

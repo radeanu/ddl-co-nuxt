@@ -1,7 +1,7 @@
 <template>
 	<section id="contract" class="layout-wrapper">
 		<div class="content">
-			<p class="title">Долгосрочные договора</p>
+			<h2 class="title">Долгосрочные договора</h2>
 
 			<p class="description">
 				Сосредоточьтесь на важных делах, не беспокоясь о чистоте.

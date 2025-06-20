@@ -1,13 +1,13 @@
 <template>
 	<section id="steps" class="layout-wrapper">
-		<p class="section-title">
+		<h2 class="section-title">
 			<span>На пути к чистоте всего</span>
 			<span class="color"> 4 шага</span>
-		</p>
+		</h2>
 
 		<ul ref="sliderRef">
 			<li v-for="step in STEPS" :key="step.name" ref="itemsRef">
-				<p>{{ step.name }}</p>
+				<h3>{{ step.name }}</h3>
 
 				<NuxtImg
 					:src="step.img"

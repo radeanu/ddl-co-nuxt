@@ -1,15 +1,15 @@
 <template>
 	<section id="calculator" class="layout-wrapper">
-		<p class="section-title">
+		<h2 class="section-title">
 			<span>Рассчитайте</span>
 			<span class="color"> стоимость услуги</span>
-		</p>
+		</h2>
 
 		<form @submit.prevent class="form">
 			<div class="form-body">
-				<p class="form-title">
+				<h3 class="form-title">
 					Введите параметры и узнайте стоимость (приблизительно)
-				</p>
+				</h3>
 
 				<div class="inputs">
 					<UIDDropdown
@@ -74,13 +74,13 @@
 
 			<div class="form-total">
 				<div class="total">
-					<p class="total-amount">
+					<h3 class="total-amount">
 						<span>Итоговая стоимость</span>
 						<b class="amount">
 							<span v-if="total > 0">{{ total }} ₽</span>
 							<span v-else>~</span>
 						</b>
-					</p>
+					</h3>
 
 					<p class="total-hint">*Минимальная сумма заказа 3 500 ₽</p>
 				</div>

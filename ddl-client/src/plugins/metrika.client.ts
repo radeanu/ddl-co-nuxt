@@ -37,7 +37,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 
 	img.src = `https://mc.yandex.ru/watch/${config.YM_ID}`;
 	img.style = 'position:absolute; left:-9999px;';
-	img.alt = '';
+	img.alt = 'yandex';
 
 	div.appendChild(img);
 	noscript.appendChild(div);

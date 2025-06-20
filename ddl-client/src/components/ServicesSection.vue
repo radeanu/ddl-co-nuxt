@@ -1,13 +1,13 @@
 <template>
 	<section id="services" class="layout-wrapper">
-		<p class="section-title">
+		<h2 class="section-title">
 			<span>Предоставляем</span>
 			<span class="color"> множество услуг</span>
-		</p>
+		</h2>
 
 		<ul>
 			<li v-for="item in services" :key="item.name" class="service">
-				<p class="name">{{ item.name }}</p>
+				<h3 class="name">{{ item.name }}</h3>
 
 				<p class="price">
 					<UIDIcon name="pin" />

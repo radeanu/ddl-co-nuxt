@@ -67,7 +67,7 @@
 			<img
 				width="88"
 				height="31"
-				alt=""
+				alt="yandex"
 				border="0"
 				border-radius="8"
 				src="https://yandex.ru/cycounter?ddl-99.ru&theme=light&lang=ru"

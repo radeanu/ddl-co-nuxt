@@ -10,7 +10,10 @@ export default defineNuxtConfig({
 	},
 	vite: {
 		build: {
-			modulePreload: false
+			modulePreload: false,
+			assetsInlineLimit: 0,
+			cssMinify: true,
+			cssCodeSplit: true
 		},
 		optimizeDeps: {
 			exclude: ['@nuxt/image']
