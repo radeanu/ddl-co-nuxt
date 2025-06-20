@@ -13,7 +13,6 @@
     "@nuxt/eslint": "^1.4.1",
     "@nuxt/icon": "^1.13.0",
     "@nuxt/image": "^1.10.0",
-    "@nuxtjs/seo": "^3.0.3",
     "eslint": "^9.28.0",
     "nuxt": "^3.17.5",
     "vee-validate": "^4.15.0",
@@ -22,6 +21,7 @@
     "yup": "^1.6.1"
   },
   "devDependencies": {
+    "@nuxtjs/seo": "^3.0.3",
     "eslint-plugin-vuejs-accessibility": "^2.4.1",
     "sass-embedded": "^1.89.1"
   }
