@@ -220,7 +220,7 @@ footer {
 @include screen1240 {
 	footer {
 		background-color: #ffffff;
-		margin-top: 118px;
+		margin-top: 60px;
 	}
 
 	.icon {

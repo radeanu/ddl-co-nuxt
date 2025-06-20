@@ -1,6 +1,6 @@
 <template>
 	<section id="example" class="layout-wrapper">
-		<h2 class="title">
+		<h2 class="section-title">
 			<span>Примеры</span>
 			<span class="color"> наших работ</span>
 		</h2>
@@ -64,13 +64,11 @@ onMounted(() => {
 			{
 				isHidden: {
 					handler() {
-						console.log('HIDDEN');
 						item.dataset.visible = '0';
 					}
 				},
 				isIntersecting: {
 					handler() {
-						console.log('VISIBLE');
 						item.dataset.visible = '1';
 					}
 				}
@@ -95,7 +93,7 @@ function handleScrollNext() {
 	const nextItem = itemsRef.value[nextIndex];
 
 	nextItem.scrollIntoView({
-		block: 'start',
+		block: 'nearest',
 		inline: 'start',
 		behavior: 'smooth'
 	});
@@ -104,22 +102,15 @@ function handleScrollNext() {
 
 <style lang="scss" scoped>
 section {
-	margin-top: 60px;
+	margin-top: 120px;
 	position: relative;
 
-	--img-width: calc(50vw - var(--layout-pad-x) - 3px);
+	--img-width: calc(50vw - var(--layout-pad-x) - 7px);
 	--img-height: 180px;
 }
 
-.title {
-	font-weight: 600;
-	font-size: 26px;
-	line-height: 32px;
+.section-title {
 	max-width: 170px;
-
-	.color {
-		color: #86a8ff;
-	}
 }
 
 .examples {
@@ -201,12 +192,17 @@ picture {
 
 @include screen1024 {
 	section {
-		--img-width: calc(25vw - var(--layout-pad-x) - 5px);
+		margin-top: 60px;
+		--img-width: calc(25vw - var(--layout-pad-x) - 7px);
 	}
 
 	.btn-scroll {
 		right: 35px;
 		top: 390px;
+	}
+
+	.section-title {
+		max-width: 213px;
 	}
 }
 
@@ -217,13 +213,6 @@ picture {
 
 	.btn-scroll {
 		@include useFixedSize(64px, 64px);
-	}
-
-	.title {
-		font-weight: 500;
-		font-size: 64px;
-		line-height: 76px;
-		max-width: 413px;
 	}
 
 	.examples {
@@ -238,6 +227,10 @@ picture {
 			top: 20px;
 			left: 20px;
 		}
+	}
+
+	.section-title {
+		max-width: 413px;
 	}
 }
 
