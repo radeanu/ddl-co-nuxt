@@ -1,7 +1,9 @@
 <template>
 	<header class="layout-wrapper">
 		<div class="left-side">
-			<UIDIcon name="logo" class="logo" />
+			<UIDLink to="/" class="home-link">
+				<UIDIcon name="logo" class="logo" />
+			</UIDLink>
 
 			<nav class="d-block-gte-1024">
 				<ul>
@@ -85,6 +87,10 @@ header {
 	top: 0;
 	z-index: var(--z-index-header);
 	background-color: #ffffff;
+}
+
+.home-link {
+	display: flex;
 }
 
 .logo {

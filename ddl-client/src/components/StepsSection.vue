@@ -1,5 +1,5 @@
 <template>
-	<section id="steps" class="layout-wrapper">
+	<section id="steps" class="layout-wrapper" :class="{ page }">
 		<h2 class="section-title">
 			<span>На пути к чистоте всего</span>
 			<span class="color"> 4 шага</span>
@@ -23,6 +23,8 @@
 
 <script setup lang="ts">
 import { STEPS } from '@/common/constants';
+
+defineProps<{ page?: boolean }>();
 
 let interval: NodeJS.Timeout | undefined;
 const activeIdx = ref(0);
@@ -79,6 +81,10 @@ function runAnimation() {
 <style lang="scss" scoped>
 section {
 	margin-top: 60px;
+}
+
+.page {
+	margin: 0;
 }
 
 .section-title {

@@ -14,7 +14,7 @@
 			<UIDIcon name="chevron-down" class="trigger-icon" />
 		</div>
 
-		<ul v-if="isFocused" class="options">
+		<ul v-if="isFocused" :class="{ options: true, relative }">
 			<li
 				v-for="(item, idx) in formattedOptions"
 				:key="item.meta.id"
@@ -60,6 +60,7 @@ type DDropdown = {
 	trackBy?: keyof T;
 	name?: string;
 	max?: number;
+	relative?: boolean;
 	disabled?: boolean;
 	required?: boolean;
 	placeholder?: string;
@@ -84,6 +85,7 @@ const classes = computed(() => {
 		'input-row': true,
 		'dropdown-trigger': true,
 		filled: hasValue,
+		focused: isFocused.value,
 		required: props.required,
 		invalid: props.error?.length,
 		disabled: props.disabled
@@ -184,7 +186,7 @@ function handleClickOutside() {
 		color: #4b6efd;
 	}
 
-	&:focus-within {
+	&.focused {
 		.trigger-icon {
 			transform: rotate(180deg);
 		}
@@ -202,6 +204,13 @@ function handleClickOutside() {
 	z-index: var(--z-index-dropdown-list);
 	max-height: 320px;
 	overflow-y: auto;
+
+	&.relative {
+		position: relative;
+		margin-top: 12px;
+		top: 0;
+		max-height: unset;
+	}
 
 	.option {
 		padding: 8px 16px;

@@ -1,5 +1,5 @@
 <template>
-	<section id="services" class="layout-wrapper">
+	<section id="services" class="layout-wrapper" :class="{ page }">
 		<h2 class="section-title">
 			<span>Предоставляем</span>
 			<span class="color"> множество услуг</span>
@@ -72,6 +72,8 @@ import useYmTriggers from '@/composables/useYmTriggers';
 import { useLocalStorage } from '@/composables/useLocalStorage';
 import { useServiceOrderForm } from '@/composables/useServiceOrderForm';
 import { CLEANING_TYPES, BASE_PRICE, API_RESPONSE } from '@/common/constants';
+
+defineProps<{ page?: boolean }>();
 
 const storage = useLocalStorage();
 const ymTriggers = useYmTriggers();
@@ -150,6 +152,10 @@ section {
 	--btn-arrow-gap: 6px;
 
 	--btn-wrapper-size: calc(var(--btn-arrow-size) + var(--btn-arrow-gap));
+}
+
+.page {
+	margin: 0;
 }
 
 .section-title {

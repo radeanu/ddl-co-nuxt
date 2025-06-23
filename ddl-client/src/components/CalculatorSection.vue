@@ -51,6 +51,7 @@
 						v-model="otherField.value.value"
 						:options="OTHER_SERVICES"
 						:error="otherField.errorMessage.value"
+						:relative="screenWidth < 768"
 					/>
 
 					<UIDCheckboxSelect
@@ -117,8 +118,10 @@ import {
 
 import { useCalculator } from '@/composables/useCalculator';
 import { useCalculatorForm } from '@/composables/useCalculatorForm';
+import { useScreeSize } from '@/composables/useScreenSize';
 
 const { calculate } = useCalculator();
+const { screenWidth } = useScreeSize();
 
 const total = ref<number>(0);
 const dSubmitModal = ref(false);
