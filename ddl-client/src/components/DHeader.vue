@@ -1,7 +1,12 @@
 <template>
 	<header class="layout-wrapper">
 		<div class="left-side">
-			<UIDLink to="/" class="home-link">
+			<UIDLink
+				to="/"
+				title="Главная"
+				aria-label="Главная"
+				class="home-link"
+			>
 				<UIDIcon name="logo" class="logo" />
 			</UIDLink>
 

@@ -1,5 +1,15 @@
 <template>
 	<div>
+		<UIDLink
+			title="Главная"
+			aria-label="Главная"
+			to="/"
+			class="layout-wrapper link"
+		>
+			<UIDIcon name="arrow-left" />
+			<span>Вернуться на главную</span>
+		</UIDLink>
+
 		<LazyServicesSection page />
 		<LazyFooterSection />
 	</div>
@@ -26,4 +36,13 @@ useSeoMeta({
 });
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.link {
+	display: flex;
+	gap: 16px;
+	flex-wrap: nowrap;
+	align-items: center;
+	margin-block: 10px 20px;
+	margin-left: 0;
+}
+</style>

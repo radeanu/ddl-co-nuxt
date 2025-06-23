@@ -1,8 +1,10 @@
 <template>
 	<section id="services" class="layout-wrapper" :class="{ page }">
 		<h2 class="section-title">
-			<span>Предоставляем</span>
-			<span class="color"> множество услуг</span>
+			<UIDLink title="Услуги" aria-label="Услуги" to="services">
+				<span>Предоставляем</span>
+				<span class="color"> множество услуг</span>
+			</UIDLink>
 		</h2>
 
 		<ul>
@@ -72,6 +74,7 @@ import useYmTriggers from '@/composables/useYmTriggers';
 import { useLocalStorage } from '@/composables/useLocalStorage';
 import { useServiceOrderForm } from '@/composables/useServiceOrderForm';
 import { CLEANING_TYPES, BASE_PRICE, API_RESPONSE } from '@/common/constants';
+import { UIDLink } from '#components';
 
 defineProps<{ page?: boolean }>();
 

@@ -1,8 +1,14 @@
 <template>
 	<section id="faq" class="layout-wrapper" :class="{ page }">
 		<h2 class="section-title">
-			<span>Ответим на все</span>
-			<span class="color"> ваши вопросы</span>
+			<UIDLink
+				title="Вопросы/Ответы"
+				aria-label="Вопросы/Ответы"
+				to="faq"
+			>
+				<span>Ответим на все</span>
+				<span class="color"> ваши вопросы</span>
+			</UIDLink>
 		</h2>
 
 		<ul>
