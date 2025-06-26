@@ -156,7 +156,7 @@ export const LOCATIONS = [
 		value: 'yaroslavl'
 	},
 	{
-		name: 'Херсон',
-		value: 'herson'
+		name: 'Мариуполь',
+		value: 'mariupol'
 	}
 ];

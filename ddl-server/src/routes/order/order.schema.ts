@@ -1,4 +1,5 @@
 import * as yup from 'yup';
+import { isValidPhoneNumber } from 'libphonenumber-js';
 
 const MSG = {
 	cl_type: 'Укажите вид уборки',
@@ -18,7 +19,13 @@ export const createOrder = yup.object({
 	calc_sum: yup.number().optional().default(0),
 	comment: yup.string().optional().default(''),
 	name: yup.string().required(MSG.name).typeError(MSG.name),
-	phone: yup.string().required(MSG.phone).typeError(MSG.phone),
+	phone: yup
+		.string()
+		.typeError(MSG.phone)
+		.test('phone', MSG.phone, (value: any) => {
+			return isValidPhoneNumber(value, 'RU');
+		})
+		.required(MSG.phone),
 	services: yup
 		.array()
 		.of(yup.string().required(MSG.error))
@@ -28,6 +35,12 @@ export const createOrder = yup.object({
 
 export const createOrderCall = yup.object({
 	name: yup.string().required(MSG.name).typeError(MSG.name),
-	phone: yup.string().required(MSG.phone).typeError(MSG.phone),
+	phone: yup
+		.string()
+		.test('phone', MSG.phone, (value: any) => {
+			return isValidPhoneNumber(value, 'RU');
+		})
+		.required(MSG.phone)
+		.typeError(MSG.phone),
 	location: yup.string().required(MSG.location).typeError(MSG.location)
 });

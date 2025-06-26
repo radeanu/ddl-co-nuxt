@@ -1,9 +1,11 @@
 import * as yup from 'yup';
 import { useField, useForm } from 'vee-validate';
+import { isValidPhoneNumber } from 'libphonenumber-js';
 
 const MESSAGES = {
 	name: 'Укажите имя',
 	phone: 'Укажите номер телефона',
+	phoneInvalid: 'Неверный номер телефона',
 	comment: 'Укажите комментарий'
 };
 
@@ -11,7 +13,11 @@ const stringRule = (msg: string) => yup.string().typeError(msg);
 
 const validationSchema = yup.object({
 	name: stringRule(MESSAGES.name).required(MESSAGES.name),
-	phone: stringRule(MESSAGES.phone).required(MESSAGES.phone),
+	phone: stringRule(MESSAGES.phone)
+		.test('phone', MESSAGES.phoneInvalid, (value: any) => {
+			return isValidPhoneNumber(value, 'RU');
+		})
+		.required(MESSAGES.phone),
 	comment: stringRule(MESSAGES.comment).optional().defined('')
 });
 
