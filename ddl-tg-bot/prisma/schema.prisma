@@ -7,6 +7,12 @@ datasource db {
     url      = env("DATABASE_URL")
 }
 
+enum ReviewStatus {
+    pending
+    sent
+    validated
+}
+
 model Client {
     id        Int      @id @default(autoincrement())
     name      String
@@ -26,6 +32,7 @@ model Order {
     clientId  Int
     isCall    Boolean  @default(false)
     location  String   @default("moscow")
+    key       String?  @default(uuid())
     cl_type   String
     area_type String
     area      Decimal
@@ -36,8 +43,9 @@ model Order {
 
     OrderServices OrderServices[]
 
-    Client         Client           @relation(fields: [clientId], references: [id])
+    Review         Review[]
     TgNotification TgNotification[]
+    Client         Client           @relation(fields: [clientId], references: [id])
 
     @@map("order")
 }
@@ -65,4 +73,22 @@ model TgNotification {
     Order Order @relation(fields: [orderId], references: [id])
 
     @@map("tgNotification")
+}
+
+model Review {
+    id        Int          @id @default(autoincrement())
+    orderId   Int?
+    sent      Boolean      @default(false)
+    valid     Boolean      @default(false)
+    status    ReviewStatus @default(pending)
+    name      String
+    review    String
+    rating    Int
+    location  String       @default("moscow")
+    createdAt DateTime     @default(now())
+    updatedAt DateTime     @updatedAt
+
+    Order Order? @relation(fields: [orderId], references: [id])
+
+    @@map("review")
 }

@@ -1,81 +1,27 @@
 import cron from 'node-cron';
-import { message } from 'telegraf/filters';
-import { Scenes, Telegraf, session } from 'telegraf';
+import { callbackQuery, message } from 'telegraf/filters';
+import { Markup, Scenes, session } from 'telegraf';
 
 import commands from '@/commands/index.js';
-import { env, logger } from '@/config/index.js';
+import { useTgBot } from '@/config.bot.js';
+import { logger } from '@/config/index.js';
+import * as services from '@/services/index.js';
+import { LABELS, MENU_COMMANDS } from '@/common/index.js';
 import type { CommandHandler, MyContext } from '@/common/types.js';
-import { LABELS, LOCATIONS, MENU_COMMANDS, waitFor } from '@/common/index.js';
 
-import { getNewNotifications, updateNotification } from '@/db/index.js';
+const bot = useTgBot();
 
-const bot = new Telegraf<MyContext>(env.BOT_TOKEN);
-const taskRunner = cron.createTask('* * * * * *', handleNewNotifications, {
+const taskRunner = cron.createTask('* * * * * *', services.handleNewNotifications, {
 	noOverlap: true
 });
 
-async function sendNotification(message: string) {
-	try {
-		const tg_ids = env.ADMIN_TG_ID.split(',');
-
-		await Promise.allSettled(
-			tg_ids.map(async (chatId) => {
-				try {
-					await bot.telegram.sendMessage(chatId, message, {
-						parse_mode: 'HTML'
-					});
-					return;
-				} catch (e) {
-					logger.error({
-						title: 'sendNotification: sendMessage',
-						chatId,
-						error: e
-					});
-					return;
-				}
-			})
-		);
-
-		await waitFor(1000);
-		return { success: true, msg: '' };
-	} catch (error) {
-		logger.error({ title: 'sendNotification', error });
-		return { success: false, msg: 'Error' };
+const taskReviewRunner = cron.createTask(
+	'* * * * * *',
+	services.handleNewReviewNotifications,
+	{
+		noOverlap: true
 	}
-}
-
-async function handleNewNotifications() {
-	const newNotifications = await getNewNotifications();
-
-	if (!newNotifications.length) return;
-
-	for await (const item of newNotifications) {
-		const locValue = LOCATIONS.find((l) => l.value === item.Order.location);
-
-		const messages = [
-			`<b>⭐ Новая заявка, № ${item.orderId}\n</b>`,
-			`<b>Вид уборки:</b> ${item.Order.cl_type}`,
-			`<b>Тип помещения:</b> ${item.Order.area_type}`,
-			`<b>Метраж:</b> ${item.Order.area}`,
-			item.Order.OrderServices.length
-				? `<b>Дополнительные услуги:</b> ${item.Order.OrderServices.map((s) => s.name).join(', ')}`
-				: false,
-			`<b>Комментарий:</b> ${item.Order.comment ?? '-'}\n`,
-			`📍Город: ${locValue?.name ?? LOCATIONS[0].name}`,
-			`💲 ${item.Order.calc_sum} ₽`,
-			`👤 ${item.Order.Client.name}`,
-			`☎️ ${item.Order.Client.phone}`,
-			`📆 ${item.Order.createdAt.toLocaleString()}`
-		]
-			.filter(Boolean)
-			.join('\n');
-
-		const res = await sendNotification(messages);
-		const log = res.success ? '' : res.msg;
-
-		await updateNotification(item.id, res.success, log);
-	}
-}
+);
 
 async function bootstrap() {
 	bot.context.welcome = [LABELS.welcome].join('\n\n');
@@ -96,8 +42,34 @@ async function bootstrap() {
 		commandHandler(bot);
 	});
 
-	bot.on(message('text'), async (ctx, next) => {
-		return next();
+	bot.on(callbackQuery('data'), async (ctx, next) => {
+		try {
+			const [name, ...args] = ctx.callbackQuery.data.split('|');
+
+			if (name !== 'review') return next();
+
+			const reviewId = +args[0];
+			const valid = +args[1];
+
+			const res = await services.handleReviewValidation(reviewId, Boolean(valid));
+
+			if (!res.success) {
+				return ctx.reply(res.msg);
+			}
+
+			const text = valid ? '✅ Отзыв принят' : '❌ Отзыв не принят';
+
+			return ctx.editMessageReplyMarkup(
+				Markup.inlineKeyboard([Markup.button.url(text, 'https://ddl-99.ru')])
+					.reply_markup
+			);
+		} catch (error) {
+			logger.error({
+				title: 'callbackQuery: review',
+				data: ctx.callbackQuery.data
+			});
+			return ctx.reply(LABELS.error);
+		}
 	});
 
 	bot.catch((error) => {
@@ -113,10 +85,14 @@ async function handleShutdown(reason: string) {
 	bot.stop(reason);
 	await taskRunner.stop();
 	await taskRunner.destroy();
+
+	await taskReviewRunner.stop();
+	await taskReviewRunner.destroy();
 }
 
 await bootstrap().then(async () => {
 	await taskRunner.start();
+	await taskReviewRunner.start();
 });
 
 process.once('SIGINT', async () => await handleShutdown('SIGINT'));
