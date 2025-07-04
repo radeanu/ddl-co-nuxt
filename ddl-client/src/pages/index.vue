@@ -1,14 +1,14 @@
 <template>
 	<div>
-		<!-- <LazyIntroSection />
+		<LazyIntroSection />
 		<LazyCalculatorSection />
 		<LazyServicesSection />
 		<LazyStepsSection />
 		<LazyContractSection />
-		<LazyExamplesSection /> -->
+		<LazyExamplesSection />
 		<LazyReviewsSection />
-		<!-- <LazyFaqSection /> -->
-		<!-- <LazyFooterSection /> -->
+		<LazyFaqSection />
+		<LazyFooterSection />
 	</div>
 </template>
 
