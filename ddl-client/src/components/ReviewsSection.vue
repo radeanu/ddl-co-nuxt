@@ -16,16 +16,13 @@
 				<div class="name">
 					<b>{{ item.name }}</b>
 
-					<div class="stars">
-						<UIDIcon
-							v-for="v in 5"
-							:key="v"
-							:style="{
-								color: item.rating <= v ? '#454545' : '#638fff'
-							}"
-							:name="item.rating <= v ? 'star' : 'star-filled'"
-						/>
-					</div>
+					<UIDInputRating
+						:count="5"
+						:min="1"
+						:max="5"
+						disabled
+						:model-value="item.rating"
+					/>
 				</div>
 
 				<p class="comment">{{ item.review }}</p>
@@ -51,6 +48,15 @@
 					auto-resize
 					:rows="4"
 					:max-rows="10"
+				/>
+
+				<UIDInputRating
+					:count="5"
+					:min="1"
+					:max="5"
+					label="Укажите оценку"
+					:error="ratingField.errorMessage.value"
+					v-model="ratingField.value.value"
 				/>
 
 				<p
@@ -149,13 +155,12 @@ async function handleSubmit() {
 		submitResult.value.message = API_RESPONSE.reviewError;
 	} finally {
 		loading.finish();
+		if (submitResult.value.success) {
+			handleReset();
+		}
 
 		setTimeout(() => {
 			submitResult.value.submitted = false;
-
-			if (submitResult.value.success) {
-				handleReset();
-			}
 		}, 50000);
 	}
 }
@@ -267,11 +272,16 @@ section {
 
 @include screen1440 {
 	.layout-wrapper {
-		grid-template-columns: 40% 1fr;
+		column-gap: 33px;
+		grid-template-columns: 30% 1fr;
+	}
+
+	.section-title {
+		max-width: 200px;
 	}
 
 	.right {
-		margin-top: 120px;
+		margin-top: 180px;
 	}
 
 	.reviews {

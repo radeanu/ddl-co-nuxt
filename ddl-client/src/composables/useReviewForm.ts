@@ -33,7 +33,7 @@ export function useReviewForm() {
 
 	const nameField = useField<string>('name');
 	const reviewField = useField<string>('review');
-	const ratingField = useField<number>('rating', [], { initialValue: 5 });
+	const ratingField = useField<number>('rating', [], { initialValue: 0 });
 
 	return {
 		validate,
