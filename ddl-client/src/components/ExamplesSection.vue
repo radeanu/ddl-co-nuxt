@@ -34,7 +34,7 @@
 </template>
 
 <script setup lang="ts">
-const examples = [1, 1, 2, 2, 3, 3, 4, 4].map((ex, idx) => {
+const examples = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6].map((ex, idx) => {
 	const before = idx % 2 === 0;
 	const img = before ? 'before' : 'after';
 	const className = before ? 'before' : 'after';

@@ -156,6 +156,10 @@ export const LOCATIONS = [
 		value: 'yaroslavl'
 	},
 	{
+		name: 'Владимир',
+		value: 'vladimir'
+	},
+	{
 		name: 'Мариуполь',
 		value: 'mariupol'
 	}
