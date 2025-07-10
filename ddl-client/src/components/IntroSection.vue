@@ -30,8 +30,14 @@
 			/>
 		</div>
 
-		<div class="right">
-			<NuxtImg class="img" src="/images/cleaning.png" alt="Фон" preload />
+		<div itemscope itemtype="http://schema.org/ImageObject" class="right">
+			<NuxtImg
+				class="img"
+				src="/images/cleaning.png"
+				alt="Фон"
+				preload
+				itemprop="contentUrl"
+			/>
 		</div>
 	</section>
 </template>
