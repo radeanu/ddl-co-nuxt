@@ -31,6 +31,8 @@ useSeoMeta({
 	twitterTitle: SEO.title,
 	twitterDescription: SEO.description
 });
+
+useHead({ htmlAttrs: { lang: 'ru' } });
 </script>
 
 <style lang="scss" scoped></style>

@@ -3,12 +3,6 @@
 		<DHeader />
 
 		<slot />
-
-		<!-- <FooterSectionComp />
-
-		<ClientOnly>
-			<LazyCookiePopup v-if="dPopup" @submit="handleSubmitCookie" />
-		</ClientOnly> -->
 	</div>
 </template>
 
