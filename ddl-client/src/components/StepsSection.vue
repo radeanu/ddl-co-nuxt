@@ -1,14 +1,8 @@
 <template>
 	<section id="steps" class="layout-wrapper" :class="{ page }">
 		<h2 class="section-title">
-			<UIDLink
-				title="Порядок выполнения заказа"
-				aria-label="Порядок выполнения заказа"
-				to="steps"
-			>
-				<span>На пути к чистоте всего</span>
-				<span class="color"> 4 шага</span>
-			</UIDLink>
+			<span>На пути к чистоте всего</span>
+			<span class="color"> 4 шага</span>
 		</h2>
 
 		<ul ref="sliderRef">

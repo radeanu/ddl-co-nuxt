@@ -1,10 +1,8 @@
 <template>
 	<section id="services" class="layout-wrapper" :class="{ page }">
 		<h2 class="section-title">
-			<UIDLink title="Услуги" aria-label="Услуги" to="services">
-				<span>Предоставляем</span>
-				<span class="color"> множество услуг</span>
-			</UIDLink>
+			<span>Предоставляем</span>
+			<span class="color"> множество услуг</span>
 		</h2>
 
 		<ul>
