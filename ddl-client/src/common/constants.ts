@@ -18,8 +18,8 @@ export const TEXT = {
 
 export const CONTACTS = {
 	phone: {
-		link: 'tel:+79290781517',
-		label: '8 929 078-15-17'
+		link: 'tel:+79206328936',
+		label: '8 920 632-89-36'
 	},
 	tg: {
 		link: 'https://t.me/ddlcleaning',
@@ -166,9 +166,9 @@ export const API_RESPONSE = {
 };
 
 export const SEO = {
-	title: 'Клининг помещений в Москве, Ярославль. Чистка, мойка, уборка, стирка',
+	title: 'Клининговая компания',
 	description:
-		'Услуги по уборке жилых и коммерческих помещений. Стоимость от от 120 ₽ /м2, срочная уборка, поддерживающая, после ремонта, генеральная, химчистка, сухой туман'
+		'Услуги по уборке жилых и коммерческих помещений. Услуги по чистке, прочистке канализации, устранение засоров.'
 };
 
 export const LOCATIONS = [
@@ -177,15 +177,7 @@ export const LOCATIONS = [
 		value: 'moscow'
 	},
 	{
-		name: 'Ярославль',
-		value: 'yaroslavl'
-	},
-	{
-		name: 'Владимир',
-		value: 'vladimir'
-	},
-	{
-		name: 'Мариуполь',
-		value: 'mariupol'
+		name: 'Рязань',
+		value: 'ryazan'
 	}
 ];

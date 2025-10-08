@@ -7,8 +7,8 @@
 	"license": "ISC",
 	"description": "",
 	"scripts": {
-		"build": "rm -rf dist && tsc && tsc-alias",
-		"dev": "tsc && tsc-alias && node dist/index.js"
+		"build": "bun build ./src/index.ts --outdir dist",
+		"dev": "bun run --watch ./src/index.ts"
 	},
 	"dependencies": {
 		"@prisma/client": "^6.9.0",
@@ -30,7 +30,6 @@
 		"nodemon": "^3.1.10",
 		"prettier": "^3.5.3",
 		"prisma": "^6.9.0",
-		"tsc-alias": "^1.8.16",
 		"typescript": "^5.8.3"
 	}
 }

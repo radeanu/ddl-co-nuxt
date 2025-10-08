@@ -2,10 +2,7 @@
 	<section class="layout-wrapper">
 		<div class="left">
 			<h1>Профессиональный клининг помещений</h1>
-			<h2>
-				Предлагаем профессиональные услуги по уборке жилых и
-				коммерческих помещений.
-			</h2>
+			<h2>Предлагаем услуги по уборке жилых и коммерческих помещений.</h2>
 
 			<div class="btns">
 				<UIDLink to="/#calculator">
@@ -206,6 +203,7 @@ section {
 
 	.left {
 		padding-inline: 50px;
+		mask: radial-gradient(30px at 0 0, black 100%, transparent 100%) 0 0;
 
 		h1 {
 			margin-top: 141px;
