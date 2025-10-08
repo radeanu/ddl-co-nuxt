@@ -1,82 +1,162 @@
 <template>
 	<section class="layout-wrapper">
-		<div class="left">
-			<h1>Профессиональный клининг помещений</h1>
-			<h2>Предлагаем услуги по уборке жилых и коммерческих помещений.</h2>
-
-			<div class="btns">
-				<UIDLink to="/#calculator">
-					<button type="button" class="btn1">
-						Рассчитать стоимость
-					</button>
-				</UIDLink>
-
-				<UIDLink to="/#contract">
-					<button type="button" class="btn2">
-						Хочу сотрудничать
-					</button>
-				</UIDLink>
-			</div>
-
+		<div class="block left">
 			<NuxtImg
-				src="/images/vector.png"
-				fit="contain"
-				loading="lazy"
-				decoding="async"
-				alt="Фон"
-			/>
-		</div>
-
-		<div itemscope itemtype="http://schema.org/ImageObject" class="right">
-			<NuxtImg
-				class="img"
 				src="/images/cleaning.png"
-				alt="Фон"
+				alt="Фон 1"
 				preload
 				itemprop="contentUrl"
 			/>
+
+			<div class="content">
+				<div class="content-inner">
+					<h1 class="title">Профессиональный клининг помещений</h1>
+
+					<div class="cities-wrapper">
+						<UIDIcon name="pin" />
+
+						<ul class="cities">
+							<li
+								v-for="item in LOCATIONS.cleaning"
+								:key="item.value"
+							>
+								{{ item.name }}
+							</li>
+						</ul>
+					</div>
+
+					<div class="btns">
+						<UIDLink to="/#calculator">
+							<button type="button" class="btn1">
+								Рассчитать стоимость
+							</button>
+						</UIDLink>
+
+						<UIDLink to="/#contract">
+							<button type="button" class="btn2">
+								Хочу сотрудничать
+							</button>
+						</UIDLink>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="block right">
+			<NuxtImg
+				src="/images/drains-clean.webp"
+				alt="Фон 2"
+				preload
+				itemprop="contentUrl"
+			/>
+
+			<div class="content">
+				<div class="content-inner">
+					<h2 class="title">
+						<span>Чистка</span>
+						<br />
+						<span>Устранение засоров</span>
+						<br />
+						<span>Прочистка канализации</span>
+					</h2>
+
+					<div class="cities-wrapper">
+						<UIDIcon name="pin" />
+
+						<ul class="cities">
+							<li
+								v-for="item in LOCATIONS.drains"
+								:key="item.value"
+							>
+								{{ item.name }}
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
 		</div>
 	</section>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { LOCATIONS } from '@/common/constants';
+</script>
 
 <style lang="scss" scoped>
 section {
 	display: grid;
 	row-gap: 12px;
 	grid-template-columns: 1fr;
-	grid-template-rows: auto auto;
+	grid-template-rows: 384px 384px;
 }
 
-.left {
-	background-color: #cfd2dd;
+.block {
 	border-radius: 20px;
-	color: #666666;
-	padding: 16px;
 	position: relative;
 	z-index: 1;
 
-	h1 {
-		color: #1d1d1d;
+	.title {
 		font-weight: 600;
 		font-size: 28px;
 		line-height: 40px;
 	}
 
-	h2 {
-		margin-top: 20px;
-		font-weight: 500;
-		font-size: 16px;
-		line-height: 24px;
-	}
-
 	img {
 		position: absolute;
-		right: 0;
-		bottom: 0;
 		z-index: -1;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		border-radius: inherit;
+		object-position: top;
 	}
+
+	.content {
+		width: 100%;
+		height: 100%;
+		border-radius: inherit;
+		position: absolute;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		gap: 40px;
+	}
+
+	.content-inner {
+		color: #ffffff;
+		background-color: #1d1d1ddb;
+		padding: 16px;
+		height: auto;
+		border-top-right-radius: 20px;
+		width: 80%;
+		backdrop-filter: blur(50px);
+		border-bottom-left-radius: 20px;
+	}
+
+	.cities-wrapper {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		margin-top: 20px;
+	}
+
+	.cities {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 12px;
+		align-items: center;
+		font-size: 16px;
+		font-weight: 400;
+		color: #b9b9b9;
+	}
+}
+
+.left {
+	border-radius: 20px;
+	position: relative;
+	z-index: 1;
 
 	.btns {
 		display: flex;
@@ -96,63 +176,59 @@ section {
 			line-height: 24px;
 			padding-inline: 20px;
 			width: 100%;
+			color: #ffffff;
 		}
 
 		.btn1 {
-			color: #ffffff;
 			background-color: #4b6efd;
 			border: 1px solid #4b6efd;
 		}
 
 		.btn2 {
-			color: #1d1d1d;
 			background-color: transparent;
-			border: 1px solid #1d1d1d;
+			border: 1px solid #ffffff;
 		}
 	}
 }
 
 .right {
-	border-radius: 20px;
+	img {
+		transform: scaleX(-1);
+	}
 
-	.img {
-		width: 100%;
-		height: 328px;
-		object-fit: cover;
-		border-radius: inherit;
-		object-position: top;
+	.content {
+		justify-content: flex-start;
+		align-items: flex-end;
+	}
+
+	.content-inner {
+		background-color: rgb(255 255 255 / 70%);
+		color: #000000;
+	}
+
+	.cities {
+		color: #000000;
 	}
 }
 
 @include screen768 {
 	section {
 		column-gap: 25px;
+		grid-template-columns: 1fr 1fr;
 		grid-template-rows: 384px;
-		grid-template-columns: 57.3% 1fr;
+	}
+
+	.block {
+		border-radius: 24px;
+
+		.content-inner {
+			padding: 30px;
+		}
 	}
 
 	.left {
-		border-radius: 24px;
-		padding: 0 20px;
-
-		h1 {
-			margin-top: 41px;
-		}
-
-		h2 {
-			margin-top: 20px;
-		}
-
 		.btns {
 			gap: 14px;
-		}
-	}
-
-	.right {
-		border-radius: 24px;
-
-		.img {
-			height: 100%;
 		}
 	}
 }
@@ -163,35 +239,31 @@ section {
 		grid-template-rows: 534px;
 	}
 
-	.left {
-		h1 {
-			font-size: 52px;
+	.block {
+		.title {
+			font-size: 32px;
 			line-height: 120%;
 		}
 
-		h2 {
-			font-size: 22px;
+		.content-inner {
+			padding: 30px;
 		}
+	}
 
+	.left {
 		.btns {
 			margin-top: 44px;
-			flex-wrap: nowrap;
 
 			button {
-				font-size: 20px;
+				font-size: 18px;
 				width: auto;
 			}
 		}
 	}
 
 	.right {
-		border-radius: 20px;
-
-		.img {
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-			border-radius: inherit;
+		.content-inner {
+			padding-top: 50px;
 		}
 	}
 }
@@ -201,23 +273,19 @@ section {
 		grid-template-rows: 734px;
 	}
 
+	.block {
+		.title {
+			font-size: 48px;
+		}
+	}
+
 	.left {
-		padding-inline: 50px;
-		mask: radial-gradient(30px at 0 0, black 100%, transparent 100%) 0 0;
-
-		h1 {
-			margin-top: 141px;
-			font-size: 72px;
-		}
-
-		h2 {
-			font-size: 24px;
-		}
-
 		.btns {
+			flex-wrap: nowrap;
 			margin-top: 64px;
 
 			button {
+				font-size: 20px;
 				height: 58px;
 				border-radius: 32px;
 			}

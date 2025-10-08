@@ -12,7 +12,7 @@
 
 		<ul v-if="dList" class="list">
 			<li
-				v-for="loc in LOCATIONS"
+				v-for="loc in ALL_LOCATIONS"
 				:class="{
 					item: true,
 					selected: selected?.value === loc.value
@@ -26,12 +26,12 @@
 </template>
 
 <script setup lang="ts">
-import { LOCATIONS } from '@/common/constants';
+import { ALL_LOCATIONS } from '@/common/constants';
 import { useLocalStorage } from '@/composables/useLocalStorage';
 
 const storage = useLocalStorage();
 
-const selected = ref<(typeof LOCATIONS)[number]>(LOCATIONS[0]);
+const selected = ref<(typeof ALL_LOCATIONS)[number]>(ALL_LOCATIONS[0]);
 
 const dLocation = ref(false);
 const dList = ref(false);
@@ -40,7 +40,7 @@ onMounted(() => {
 	const value = storage.getItem('loc');
 
 	if (!value) {
-		storage.setItem('loc', LOCATIONS[0].value);
+		storage.setItem('loc', ALL_LOCATIONS[0].value);
 	}
 
 	syncSelected();
@@ -51,12 +51,12 @@ function syncSelected() {
 	const value = storage.getItem('loc');
 	if (!value) return;
 
-	const item = LOCATIONS.find((v) => v.value === value);
+	const item = ALL_LOCATIONS.find((v) => v.value === value);
 
-	selected.value = item ? item : LOCATIONS[0];
+	selected.value = item ? item : ALL_LOCATIONS[0];
 }
 
-function handleSelect(loc: (typeof LOCATIONS)[number]) {
+function handleSelect(loc: (typeof ALL_LOCATIONS)[number]) {
 	storage.setItem('loc', loc.value);
 	syncSelected();
 	dList.value = false;

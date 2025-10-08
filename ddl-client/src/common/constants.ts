@@ -114,6 +114,20 @@ export const CLEANING_TYPES = [
 			coef: 1,
 			unit: false
 		}
+	},
+	{
+		value: 'tuman',
+		name: 'Механическая чистка труб',
+		description:
+			'Устранение засоров, чистка труб, измельчение и извлечение посторонних предметов, \nрезка корней и строительных отложений\n после ремонта',
+		price: null
+	},
+	{
+		value: 'otogrev',
+		name: 'Отогрев и разморозка труб',
+		description:
+			'Отогрев отопления, \nводоснабжения и канализации, \n любых труб внутренним диаметром от 15 мм до 300 мм \n прямые участки длиной 50 метров, пластик, РР, чугун, металл',
+		price: null
 	}
 ];
 
@@ -171,13 +185,47 @@ export const SEO = {
 		'Услуги по уборке жилых и коммерческих помещений. Услуги по чистке, прочистке канализации, устранение засоров.'
 };
 
-export const LOCATIONS = [
-	{
-		name: 'Москва',
-		value: 'moscow'
-	},
-	{
-		name: 'Рязань',
-		value: 'ryazan'
-	}
+export const LOCATIONS = {
+	drains: [
+		{
+			name: 'Москва',
+			value: 'moscow'
+		},
+		{
+			name: 'Рязань',
+			value: 'ryazan'
+		},
+		{
+			name: 'Мытищи',
+			value: 'mytischi'
+		},
+		{
+			name: 'Королёв',
+			value: 'korolev'
+		}
+	],
+	cleaning: [
+		{
+			name: 'Москва',
+			value: 'moscow'
+		},
+		{
+			name: 'Рязань',
+			value: 'ryazan'
+		}
+	]
+};
+
+export const ALL_LOCATIONS = Array.from(
+	new Map(
+		[...LOCATIONS.cleaning, ...LOCATIONS.drains].map((location) => [
+			location.value,
+			location
+		])
+	).values()
+);
+
+export const SERVICE_TYPES = [
+	{ value: 'cleaning', name: 'Клининг' },
+	{ value: 'drains', name: 'Прочистка канализации' }
 ];

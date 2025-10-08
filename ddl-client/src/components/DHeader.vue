@@ -43,7 +43,11 @@
 				<UIDIcon name="tg" />
 			</UIDLink>
 
-			<button type="button" class="btn-order d-flex-gte-1024">
+			<button
+				type="button"
+				class="btn-order d-flex-gte-1024"
+				@click="openOrderModal = true"
+			>
 				Оставить заявку
 			</button>
 
@@ -59,7 +63,12 @@
 			</button>
 		</div>
 
-		<MobileMenu v-if="openMbMenu" @close="handleToggleMobileMenu" />
+		<MobileMenu
+			v-if="openMbMenu"
+			@close="handleToggleMobileMenu"
+			@order="handleOpenOrderModal"
+		/>
+		<OrderModal v-if="openOrderModal" @close="openOrderModal = false" />
 	</header>
 </template>
 
@@ -71,12 +80,17 @@ const ymTriggers = useYmTriggers();
 const { togglePageOverflow } = useTogglePageOverflow();
 
 const openMbMenu = ref(false);
+const openOrderModal = ref(false);
 
 const menus = MENUS.filter((m) => m.header);
 
 function handleToggleMobileMenu() {
 	openMbMenu.value = !openMbMenu.value;
 	togglePageOverflow(!openMbMenu.value);
+}
+
+function handleOpenOrderModal() {
+	openOrderModal.value = true;
 }
 </script>
 

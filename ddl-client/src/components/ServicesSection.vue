@@ -9,7 +9,7 @@
 			<li v-for="item in services" :key="item.name" class="service">
 				<h3 class="name">{{ item.name }}</h3>
 
-				<p class="price">
+				<p v-if="item.price" class="price">
 					<UIDIcon name="pin" />
 					<span> {{ item.price.label }} </span>
 				</p>
@@ -72,7 +72,6 @@ import useYmTriggers from '@/composables/useYmTriggers';
 import { useLocalStorage } from '@/composables/useLocalStorage';
 import { useServiceOrderForm } from '@/composables/useServiceOrderForm';
 import { CLEANING_TYPES, BASE_PRICE, API_RESPONSE } from '@/common/constants';
-import { UIDLink } from '#components';
 
 defineProps<{ page?: boolean }>();
 
@@ -83,6 +82,8 @@ const runtimeConfig = useRuntimeConfig();
 const { nameField, phoneField, validate, handleReset } = useServiceOrderForm();
 
 const services = CLEANING_TYPES.map((s) => {
+	if (!s.price) return s;
+
 	const bse_price = s.price.unit ? BASE_PRICE.unit : BASE_PRICE.area;
 	const price_des = s.price.unit ? '/ед.' : '/м2';
 

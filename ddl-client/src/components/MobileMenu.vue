@@ -41,11 +41,13 @@
 					</div>
 				</div>
 
-				<UIDLink to="#order" class="btn-order">
-					<button type="button" @click="$emit('close')">
-						Оставить заявку
-					</button>
-				</UIDLink>
+				<button
+					type="button"
+					class="btn-order"
+					@click="handleOrderClick"
+				>
+					Оставить заявку
+				</button>
 
 				<UIDLink
 					:to="CONTACTS.tg.link"
@@ -71,6 +73,11 @@ const $emit = defineEmits<{
 }>();
 
 const ymTriggers = useYmTriggers();
+
+function handleOrderClick() {
+	$emit('close');
+	$emit('order');
+}
 </script>
 
 <style lang="scss" scoped>
