@@ -2,7 +2,7 @@ import { Markup } from 'telegraf';
 import { InlineKeyboardMarkup } from 'telegraf/types';
 
 import prisma from '@/prisma/prisma.js';
-import { LOCATIONS } from '@/common/index.js';
+import { ALL_LOCATIONS } from '@/common/index.js';
 import * as services from '@/services/index.js';
 
 import { getReviewsNotSent } from '@/db/index.js';
@@ -13,13 +13,13 @@ export async function handleNewReviewNotifications() {
 	if (!newReviews.length) return;
 
 	for await (const item of newReviews) {
-		const locValue = LOCATIONS.find((l) => l.value === item.location);
+		const locValue = ALL_LOCATIONS.find((l) => l.value === item.location);
 
 		const messages = [
 			`<b>🎁 Новый отзыв</b>\n`,
 			`<b>Отзыв:</b> ${item.review ?? '-'}\n`,
 			`🏆Оценка: ${item.rating} ⭐`,
-			`📍Город: ${locValue?.name ?? LOCATIONS[0].name}`,
+			`📍Город: ${locValue?.name ?? ALL_LOCATIONS[0].name}`,
 			`👤 ${item.name}`,
 			`📆 ${item.createdAt.toLocaleString()}`
 		]
