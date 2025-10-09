@@ -47,10 +47,7 @@
 
 			<div class="sub">
 				<UIDLink to="/">Политика конфиденциальности</UIDLink>
-				<address>
-					432027, г. Ярославль, пр-кт. Ленина 15 , д. 27а
-				</address>
-				<!-- <p>© ООО «DDL», 2025</p> -->
+				<address>г. Рязань</address>
 			</div>
 
 			<NuxtImg
