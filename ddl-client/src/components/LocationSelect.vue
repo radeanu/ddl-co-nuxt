@@ -53,7 +53,12 @@ function syncSelected() {
 
 	const item = ALL_LOCATIONS.find((v) => v.value === value);
 
-	selected.value = item ? item : ALL_LOCATIONS[0];
+	if (!item) {
+		storage.setItem('loc', ALL_LOCATIONS[0].value);
+		return;
+	}
+
+	selected.value = item;
 }
 
 function handleSelect(loc: (typeof ALL_LOCATIONS)[number]) {

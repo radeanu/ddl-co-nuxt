@@ -28,18 +28,19 @@ model Client {
 }
 
 model Order {
-    id        Int      @id @default(autoincrement())
-    clientId  Int
-    isCall    Boolean  @default(false)
-    location  String   @default("moscow")
-    key       String?  @default(uuid())
-    cl_type   String
-    area_type String
-    area      Decimal
-    calc_sum  Decimal
-    comment   String?
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+    id           Int      @id @default(autoincrement())
+    clientId     Int
+    isCall       Boolean  @default(false)
+    location     String   @default("moscow")
+    key          String?  @default(uuid())
+    cl_type      String
+    area_type    String
+    area         Decimal
+    calc_sum     Decimal
+    comment      String?
+    service_type String?
+    createdAt    DateTime @default(now())
+    updatedAt    DateTime @updatedAt
 
     OrderServices OrderServices[]
 

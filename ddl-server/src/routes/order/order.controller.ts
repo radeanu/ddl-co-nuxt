@@ -1,7 +1,7 @@
 import { type RequestHandler } from 'express';
 
 import { logger } from '@/config/index.js';
-import { validationOptions } from '@/common/index.js';
+import { SERVICE_TYPES, validationOptions } from '@/common/index.js';
 
 import * as schema from './order.schema.js';
 import * as service from './order.service.js';
@@ -17,7 +17,8 @@ export const postNewOrder: RequestHandler = (req, res, next) => {
 				area: payload.area,
 				comment: payload.comment,
 				calc_sum: payload.calc_sum,
-				location: payload.location
+				location: payload.location,
+				service_type: SERVICE_TYPES.cleaning.value
 			},
 			{
 				name: payload.name,
@@ -49,10 +50,11 @@ export const postNewOrderCall: RequestHandler = (req, res, next) => {
 				cl_type: '',
 				area_type: '',
 				area: 0,
-				comment: '',
 				calc_sum: 0,
 				isCall: true,
-				location: payload.location
+				comment: payload.comment,
+				location: payload.location,
+				service_type: payload.service_type
 			},
 			{
 				name: payload.name,

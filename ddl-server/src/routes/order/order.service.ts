@@ -29,7 +29,8 @@ export async function createOrder(
 					comment: order.comment,
 					clientId: newClientId,
 					isCall: order.isCall,
-					location: order.location
+					location: order.location,
+					service_type: order.service_type
 				}
 			});
 

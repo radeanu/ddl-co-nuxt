@@ -3,7 +3,7 @@ import { Prisma } from '@prisma/client';
 
 import prisma from '@/prisma/prisma.js';
 import { logger } from '@/config/index.js';
-import { LOCATIONS } from '@/common/index.js';
+import { ALL_LOCATIONS } from '@/common/index.js';
 
 export async function createReview(
 	review: Omit<Prisma.ReviewCreateInput, 'Order'>,
@@ -51,8 +51,8 @@ export async function getReviews() {
 				rating: l.rating,
 				createdAt: moment(l.createdAt).format('DD.MM.YYYY'),
 				location:
-					LOCATIONS.find((loc) => loc.value === l.location)?.name ??
-					LOCATIONS[0].name
+					ALL_LOCATIONS.find((loc) => loc.value === l.location)?.name ??
+					ALL_LOCATIONS[0].name
 			};
 		});
 	} catch (error) {

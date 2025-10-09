@@ -8,7 +8,8 @@ const MSG = {
 	phone: 'Укажите номер телефона',
 	name: 'Укажите имя',
 	error: 'Неверный формат',
-	location: 'Укажите регион'
+	location: 'Указу регион',
+	service_type: 'Укажите тип услуги'
 };
 
 export const createOrder = yup.object({
@@ -42,5 +43,7 @@ export const createOrderCall = yup.object({
 		})
 		.required(MSG.phone)
 		.typeError(MSG.phone),
-	location: yup.string().required(MSG.location).typeError(MSG.location)
+	comment: yup.string().optional().default(''),
+	location: yup.string().required(MSG.location).typeError(MSG.location),
+	service_type: yup.string().typeError(MSG.service_type).optional()
 });

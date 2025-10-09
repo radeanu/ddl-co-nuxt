@@ -138,7 +138,7 @@ async function handleSubmit() {
 
 		const location = storage.getItem('loc');
 
-		await $fetch('/api/order/other', {
+		await $fetch('/api/order/call', {
 			baseURL: runtimeConfig.public.API_URL,
 			method: 'POST',
 			body: {
@@ -178,6 +178,10 @@ async function handleSubmit() {
 .modal {
 	::v-deep(.modal-wrapper) {
 		position: relative;
+
+		@media screen and (min-width: 1024px) {
+			position: static;
+		}
 	}
 
 	::v-deep(.modal-content) {
@@ -190,6 +194,21 @@ async function handleSubmit() {
 		border-top-right-radius: 20px;
 		padding: 18px 12px;
 		min-height: 250px;
+		animation: slideUp 0.3s ease-out;
+
+		@media screen and (min-width: 1024px) {
+			position: static;
+			bottom: auto;
+			left: auto;
+			width: 500px;
+			max-width: 90vw;
+			max-height: 90vh;
+			border-radius: 20px;
+			padding: 32px;
+			box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+				0 10px 10px -5px rgba(0, 0, 0, 0.04);
+			animation: none;
+		}
 	}
 }
 
@@ -203,6 +222,12 @@ async function handleSubmit() {
 		white-space: pre-line;
 		text-align: center;
 		width: 100%;
+
+		// Desktop styles
+		@media screen and (min-width: 1024px) {
+			font-size: 24px;
+			margin-bottom: 8px;
+		}
 	}
 
 	.close-btn {
@@ -215,6 +240,13 @@ async function handleSubmit() {
 
 		--icon-width: 30px;
 		--icon-height: 30px;
+
+		// Desktop styles
+		@media screen and (min-width: 1024px) {
+			@include useFixedSize(32px, 32px);
+			--icon-width: 32px;
+			--icon-height: 32px;
+		}
 	}
 }
 
@@ -223,6 +255,12 @@ async function handleSubmit() {
 	display: flex;
 	gap: 20px;
 	flex-direction: column;
+
+	// Desktop styles
+	@media screen and (min-width: 1024px) {
+		margin-top: 24px;
+		gap: 24px;
+	}
 }
 
 .input-wrapper {
@@ -296,6 +334,13 @@ async function handleSubmit() {
 	font-size: 14px;
 	line-height: 20px;
 	color: #ffffff;
+
+	// Desktop styles
+	@media screen and (min-width: 1024px) {
+		height: 48px;
+		font-size: 16px;
+		line-height: 24px;
+	}
 }
 
 .form__agreement {
@@ -303,6 +348,13 @@ async function handleSubmit() {
 	font-weight: 400;
 	font-size: 12px;
 	line-height: 18px;
+
+	// Desktop styles
+	@media screen and (min-width: 1024px) {
+		margin-top: 24px;
+		font-size: 14px;
+		line-height: 20px;
+	}
 }
 
 .error {
@@ -314,11 +366,30 @@ async function handleSubmit() {
 	@include useFont(tmdr);
 	margin-top: 20px;
 	text-align: center;
+
+	// Desktop styles
+	@media screen and (min-width: 1024px) {
+		margin-top: 24px;
+		font-size: 18px;
+		line-height: 24px;
+	}
 }
 
 .input-error {
 	@include useFont(txsr);
 	color: #ea0805;
 	padding-left: 16px;
+}
+
+// Mobile slide-up animation
+@keyframes slideUp {
+	0% {
+		transform: translateY(100%);
+		opacity: 0;
+	}
+	100% {
+		transform: translateY(0);
+		opacity: 1;
+	}
 }
 </style>
