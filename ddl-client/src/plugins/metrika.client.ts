@@ -22,13 +22,21 @@ export default defineNuxtPlugin((nuxtApp) => {
 			(k.async = 1),
 			(k.src = r),
 			a.parentNode.insertBefore(k, a);
-	})(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js', 'ym');
+	})(
+		window,
+		document,
+		'script',
+		`https://mc.yandex.ru/metrika/tag.js?id=${config.YM_ID}`,
+		'ym'
+	);
 
 	ym(config.YM_ID, 'init', {
+		ssr: true,
+		webvisor: true,
 		clickmap: true,
-		trackLinks: true,
+		ecommerce: 'dataLayer',
 		accurateTrackBounce: true,
-		webvisor: true
+		trackLinks: true
 	});
 
 	const noscript = document.createElement('noscript');
