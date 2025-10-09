@@ -78,7 +78,7 @@ export default defineNuxtConfig({
 				meta: [
 					{
 						name: 'yandex-verification',
-						content: '8c276e7366b6ea2f'
+						content: '18315b719c6fb0e5'
 					}
 				]
 			}
