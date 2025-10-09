@@ -18,7 +18,7 @@ export default function useYmTriggers() {
 	function hitNewOrder() {
 		const YM = (window as typeof window & { ym: Function })?.ym;
 		if (YM) {
-			YM(runtimeConfig.public.YM_ID, 'reachGoal', 'new_order');
+			YM(runtimeConfig.public.YM_ID, 'reachGoal', 'new_order_calc');
 		}
 	}
 
@@ -30,10 +30,19 @@ export default function useYmTriggers() {
 		}
 	}
 
+	function hitNewOrderCallType() {
+		const YM = (window as typeof window & { ym: Function })?.ym;
+
+		if (YM) {
+			YM(runtimeConfig.public.YM_ID, 'reachGoal', 'new_order_call_type');
+		}
+	}
+
 	return {
 		hitGoToTG,
 		hitPhoneClick,
 		hitNewOrder,
-		hitNewOrderCall
+		hitNewOrderCall,
+		hitNewOrderCallType
 	};
 }

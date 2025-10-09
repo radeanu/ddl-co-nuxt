@@ -150,7 +150,7 @@ async function handleSubmit() {
 			}
 		});
 
-		ymTriggers.hitNewOrder();
+		ymTriggers.hitNewOrderCallType();
 
 		submitResult.value.submitted = true;
 		submitResult.value.success = true;
