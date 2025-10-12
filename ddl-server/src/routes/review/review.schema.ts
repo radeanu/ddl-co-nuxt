@@ -5,7 +5,8 @@ const MSG = {
 	location: 'Укажите регион',
 	review: 'Напишите отзыв',
 	reviewLength: 'Максимум 500, минимум 30 символов',
-	rating: 'Выберите оценку'
+	rating: 'Выберите оценку',
+	website: 'required'
 };
 
 export const createReview = yup.object({
@@ -22,5 +23,5 @@ export const createReview = yup.object({
 			return parsed.length >= 30 && parsed.length <= 500;
 		})
 		.typeError(MSG.review),
-	website: yup.string().optional().default('')
+	website: yup.string().required(MSG.website)
 });

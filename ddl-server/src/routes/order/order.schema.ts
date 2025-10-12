@@ -9,7 +9,8 @@ const MSG = {
 	name: 'Укажите имя',
 	error: 'Неверный формат',
 	location: 'Указу регион',
-	service_type: 'Укажите тип услуги'
+	service_type: 'Укажите тип услуги',
+	website: 'required'
 };
 
 export const createOrder = yup.object({
@@ -32,7 +33,7 @@ export const createOrder = yup.object({
 		.of(yup.string().required(MSG.error))
 		.default([])
 		.typeError(MSG.error),
-	website: yup.string().optional().default('')
+	website: yup.string().required(MSG.website)
 });
 
 export const createOrderCall = yup.object({
@@ -47,5 +48,5 @@ export const createOrderCall = yup.object({
 	comment: yup.string().optional().default(''),
 	location: yup.string().required(MSG.location).typeError(MSG.location),
 	service_type: yup.string().typeError(MSG.service_type).optional(),
-	website: yup.string().optional().default('')
+	website: yup.string().required(MSG.website)
 });
