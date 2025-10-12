@@ -36,6 +36,20 @@
 				</p>
 
 				<form @submit.prevent>
+					<input
+						type="text"
+						name="website"
+						v-model="honeypotField.value.value"
+						style="
+							position: absolute;
+							left: -9999px;
+							width: 1px;
+							height: 1px;
+						"
+						tabindex="-1"
+						autocomplete="off"
+					/>
+
 					<UIDInputText
 						name="name"
 						placeholder="Имя"
@@ -79,7 +93,8 @@ const storage = useLocalStorage();
 const ymTriggers = useYmTriggers();
 const loading = useLoadingIndicator();
 const runtimeConfig = useRuntimeConfig();
-const { nameField, phoneField, validate, handleReset } = useServiceOrderForm();
+const { nameField, phoneField, honeypotField, validate, handleReset } =
+	useServiceOrderForm();
 
 const services = CLEANING_TYPES.map((s) => {
 	if (!s.price) return s;
@@ -119,7 +134,8 @@ async function handleSubmit() {
 			body: {
 				location,
 				name: nameField.value.value,
-				phone: phoneField.value.value
+				phone: phoneField.value.value,
+				website: honeypotField.value.value
 			}
 		});
 

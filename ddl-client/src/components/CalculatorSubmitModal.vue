@@ -16,6 +16,20 @@
 
 		<div v-else>
 			<form @submit.prevent class="form">
+				<input
+					type="text"
+					name="website"
+					v-model="honeypotField.value.value"
+					style="
+						position: absolute;
+						left: -9999px;
+						width: 1px;
+						height: 1px;
+					"
+					tabindex="-1"
+					autocomplete="off"
+				/>
+
 				<UIDInputText
 					name="name"
 					placeholder="Имя"
@@ -84,8 +98,14 @@ const storage = useLocalStorage();
 const ymTriggers = useYmTriggers();
 const loading = useLoadingIndicator();
 const runtimeConfig = useRuntimeConfig();
-const { commentField, nameField, phoneField, validate, handleReset } =
-	useCalcSubmitForm();
+const {
+	commentField,
+	nameField,
+	phoneField,
+	honeypotField,
+	validate,
+	handleReset
+} = useCalcSubmitForm();
 
 const submitResult = ref({
 	submitted: false,
@@ -116,7 +136,8 @@ async function handleSubmit() {
 				area_type: props.area_type,
 				area: props.area,
 				calc_sum: props.total,
-				services: props.services
+				services: props.services,
+				website: honeypotField.value.value
 			}
 		});
 

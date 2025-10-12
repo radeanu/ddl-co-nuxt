@@ -26,11 +26,13 @@ export function useServiceOrderForm() {
 
 	const nameField = useField<string>('name');
 	const phoneField = useField<string>('phone');
+	const honeypotField = useField<string>('website', [], { initialValue: '' });
 
 	return {
 		validate,
 		nameField,
 		phoneField,
+		honeypotField,
 		handleSubmit,
 		handleReset
 	};

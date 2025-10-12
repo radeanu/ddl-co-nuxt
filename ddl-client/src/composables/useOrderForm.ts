@@ -34,6 +34,7 @@ export function useOrderForm() {
 	const nameField = useField<string>('name');
 	const phoneField = useField<string>('phone');
 	const commentField = useField<string>('comment', [], { initialValue: '' });
+	const honeypotField = useField<string>('website', [], { initialValue: '' });
 
 	return {
 		validate,
@@ -41,6 +42,7 @@ export function useOrderForm() {
 		nameField,
 		phoneField,
 		commentField,
+		honeypotField,
 		handleReset
 	};
 }

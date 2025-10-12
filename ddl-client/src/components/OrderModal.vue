@@ -16,6 +16,20 @@
 
 		<div v-else>
 			<form @submit.prevent class="form">
+				<input
+					type="text"
+					name="website"
+					v-model="honeypotField.value.value"
+					style="
+						position: absolute;
+						left: -9999px;
+						width: 1px;
+						height: 1px;
+					"
+					tabindex="-1"
+					autocomplete="off"
+				/>
+
 				<div class="input-wrapper">
 					<div class="service-select-wrapper">
 						<label
@@ -117,6 +131,7 @@ const {
 	commentField,
 	nameField,
 	phoneField,
+	honeypotField,
 	validate,
 	handleReset
 } = useOrderForm();
@@ -146,7 +161,8 @@ async function handleSubmit() {
 				name: nameField.value.value,
 				phone: phoneField.value.value,
 				comment: commentField.value.value,
-				service_type: serviceTypeField.value.value
+				service_type: serviceTypeField.value.value,
+				website: honeypotField.value.value
 			}
 		});
 

@@ -33,6 +33,20 @@
 
 		<div class="right">
 			<form @submit.prevent class="form">
+				<input
+					type="text"
+					name="website"
+					v-model="honeypotField.value.value"
+					style="
+						position: absolute;
+						left: -9999px;
+						width: 1px;
+						height: 1px;
+					"
+					tabindex="-1"
+					autocomplete="off"
+				/>
+
 				<UIDInputText
 					name="name"
 					placeholder="Имя"
@@ -102,8 +116,14 @@ const submitResult = ref({
 const storage = useLocalStorage();
 const loading = useLoadingIndicator();
 const runtimeConfig = useRuntimeConfig();
-const { handleReset, nameField, ratingField, reviewField, validate } =
-	useReviewForm();
+const {
+	handleReset,
+	nameField,
+	ratingField,
+	reviewField,
+	honeypotField,
+	validate
+} = useReviewForm();
 
 type Review = {
 	name: string;
@@ -141,7 +161,8 @@ async function handleSubmit() {
 				location,
 				name: nameField.value.value,
 				review: reviewField.value.value,
-				rating: ratingField.value.value
+				rating: ratingField.value.value,
+				website: honeypotField.value.value
 			}
 		});
 

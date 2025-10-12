@@ -21,5 +21,6 @@ export const createReview = yup.object({
 
 			return parsed.length >= 30 && parsed.length <= 500;
 		})
-		.typeError(MSG.review)
+		.typeError(MSG.review),
+	website: yup.string().optional().default('')
 });

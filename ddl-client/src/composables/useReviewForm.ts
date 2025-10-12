@@ -34,12 +34,14 @@ export function useReviewForm() {
 	const nameField = useField<string>('name');
 	const reviewField = useField<string>('review');
 	const ratingField = useField<number>('rating', [], { initialValue: 0 });
+	const honeypotField = useField<string>('website', [], { initialValue: '' });
 
 	return {
 		validate,
 		nameField,
 		ratingField,
 		reviewField,
+		honeypotField,
 		handleReset
 	};
 }
