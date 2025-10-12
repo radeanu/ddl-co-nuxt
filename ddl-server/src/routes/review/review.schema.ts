@@ -23,5 +23,5 @@ export const createReview = yup.object({
 			return parsed.length >= 30 && parsed.length <= 500;
 		})
 		.typeError(MSG.review),
-	website: yup.string().required(MSG.website)
+	website: yup.string().typeError(MSG.website)
 });

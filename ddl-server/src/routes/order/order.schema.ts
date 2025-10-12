@@ -33,7 +33,7 @@ export const createOrder = yup.object({
 		.of(yup.string().required(MSG.error))
 		.default([])
 		.typeError(MSG.error),
-	website: yup.string().required(MSG.website)
+	website: yup.string().typeError(MSG.website)
 });
 
 export const createOrderCall = yup.object({
@@ -48,5 +48,5 @@ export const createOrderCall = yup.object({
 	comment: yup.string().optional().default(''),
 	location: yup.string().required(MSG.location).typeError(MSG.location),
 	service_type: yup.string().typeError(MSG.service_type).optional(),
-	website: yup.string().required(MSG.website)
+	website: yup.string().typeError(MSG.website)
 });
