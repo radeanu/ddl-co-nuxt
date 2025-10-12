@@ -11,12 +11,12 @@ import {
 import useRoutes from '@/routes/routes.js';
 
 const app = express();
-app.set('trust proxy', 1);
+// app.set('trust proxy', 1);
 
 app.disable('x-powered-by');
 
 useCors(app);
-useRateLimit(app);
+// useRateLimit(app);
 useCompression(app);
 useBodyParser(app);
 useRoutes(app);
