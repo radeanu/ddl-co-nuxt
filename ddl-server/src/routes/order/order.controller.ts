@@ -10,7 +10,7 @@ export const postNewOrder: RequestHandler = (req, res, next) => {
 	(async () => {
 		const payload = await schema.createOrder.validate(req.body, validationOptions);
 
-		if (payload.website.length) {
+		if (payload?.website?.length) {
 			return res.status(200).send();
 		}
 
@@ -49,7 +49,7 @@ export const postNewOrderCall: RequestHandler = (req, res, next) => {
 			validationOptions
 		);
 
-		if (payload.website.length) {
+		if (payload?.website?.length) {
 			return res.status(200).send();
 		}
 

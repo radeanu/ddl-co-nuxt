@@ -10,7 +10,7 @@ export const postNewReview: RequestHandler = (req, res, next) => {
 	(async () => {
 		const payload = await schema.createReview.validate(req.body, validationOptions);
 
-		if (payload.website.length) {
+		if (payload?.website?.length) {
 			return res.status(200).send();
 		}
 
