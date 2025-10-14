@@ -25,6 +25,10 @@ export const CONTACTS = {
 	tg: {
 		link: 'https://t.me/ddlcleaning',
 		label: ''
+	},
+	phone_drains: {
+		link: 'tel:+79307873888',
+		label: '8 930 787-38-88'
 	}
 };
 

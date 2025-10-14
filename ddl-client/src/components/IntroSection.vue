@@ -60,6 +60,15 @@
 						<span>Прочистка канализации</span>
 					</h2>
 
+					<UIDLink
+						:to="CONTACTS.phone_drains.link"
+						target="_blank"
+						class="phone-wrapper"
+						@click="ymTriggers.hitPhoneClick()"
+					>
+						{{ CONTACTS.phone_drains.label }}
+					</UIDLink>
+
 					<div class="cities-wrapper">
 						<UIDIcon name="pin" />
 
@@ -79,7 +88,10 @@
 </template>
 
 <script setup lang="ts">
-import { LOCATIONS } from '@/common/constants';
+import { LOCATIONS, CONTACTS } from '@/common/constants';
+import useYmTriggers from '@/composables/useYmTriggers';
+
+const ymTriggers = useYmTriggers();
 </script>
 
 <style lang="scss" scoped>
@@ -208,6 +220,13 @@ section {
 
 	.cities {
 		color: #000000;
+	}
+
+	.phone-wrapper {
+		margin-top: 20px;
+		color: #638fff;
+		font-weight: 600;
+		font-size: 22px;
 	}
 }
 
