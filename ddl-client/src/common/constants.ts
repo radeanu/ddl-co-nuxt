@@ -8,6 +8,7 @@ export const MENUS = [
 	{ link: '/#calculator', label: 'Калькулятор', header: false },
 	{ link: '/#services', label: 'Услуги', header: true },
 	{ link: '/#steps', label: 'Этапы работы', header: true },
+	{ link: '/articles', label: 'Статьи', header: true },
 	// { link: '/', label: 'Наши работы' },
 	{ link: '/#contacts', label: 'Контакты', header: true }
 ];
