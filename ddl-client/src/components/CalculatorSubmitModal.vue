@@ -141,7 +141,9 @@ async function handleSubmit() {
 			}
 		});
 
-		ymTriggers.hitNewOrder();
+		if (!honeypotField.value.value.length) {
+			ymTriggers.hitNewOrder();
+		}
 
 		submitResult.value.submitted = true;
 		submitResult.value.success = true;
