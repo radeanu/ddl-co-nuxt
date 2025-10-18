@@ -109,8 +109,8 @@ section {
 
 	.title {
 		font-weight: 600;
-		font-size: 28px;
-		line-height: 40px;
+		font-size: 18px;
+		line-height: 22px;
 	}
 
 	img {
@@ -175,14 +175,14 @@ section {
 		flex-wrap: wrap;
 		gap: 12px;
 		align-items: center;
-		margin-top: 41px;
+		margin-top: 24px;
 
 		button {
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			height: 48px;
-			border-radius: 48px;
+			height: 40px;
+			border-radius: 32px;
 			font-size: 16px;
 			font-weight: 600;
 			line-height: 24px;
@@ -283,6 +283,16 @@ section {
 	.right {
 		.content-inner {
 			padding-top: 50px;
+		}
+	}
+}
+
+@include screen1240 {
+	.left {
+		.btns {
+			button {
+				height: 48px;
+			}
 		}
 	}
 }
