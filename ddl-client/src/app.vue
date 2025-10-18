@@ -14,6 +14,17 @@
 	</div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+useHead({
+	title: 'Клининговая компания | DDL',
+	meta: [
+		{
+			name: 'description',
+			content:
+				'Услуги по уборке жилых и коммерческих помещений. Услуги по чистке, прочистке канализации, устранение засоров.'
+		}
+	]
+});
+</script>
 
 <style lang="scss" scoped></style>
