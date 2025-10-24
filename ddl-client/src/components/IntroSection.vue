@@ -152,6 +152,10 @@ section {
 		align-items: center;
 		gap: 8px;
 		margin-top: 20px;
+
+		span.icon {
+			min-width: 20px;
+		}
 	}
 
 	.cities {

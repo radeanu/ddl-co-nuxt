@@ -173,6 +173,50 @@ export const LOCATIONS = {
 		{
 			name: 'Рязань',
 			value: 'ryazan'
+		},
+		{
+			name: 'Королёв',
+			value: 'korolev'
+		},
+		{
+			name: 'Ростов-на-Дону',
+			value: 'rostov-na-donu'
+		},
+		{
+			name: 'Карелия',
+			value: 'karelia'
+		},
+		{
+			name: 'Санкт-Петербург',
+			value: 'piter'
+		},
+		{
+			name: 'Камчатка',
+			value: 'camchatka'
+		},
+		{
+			name: 'Воронеж',
+			value: 'voronej'
+		},
+		{
+			name: 'Нижний Новгород',
+			value: 'nijnii novgorod'
+		},
+		{
+			name: 'Липецк',
+			value: 'lipetsc'
+		},
+		{
+			name: 'Мегион',
+			value: 'megion'
+		},
+		{
+			name: 'Мурманск',
+			value: 'murmansk'
+		},
+		{
+			name: 'Краснодар',
+			value: 'krasnodar'
 		}
 	]
 };
