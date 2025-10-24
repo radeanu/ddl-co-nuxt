@@ -16,7 +16,8 @@
 
 <script setup lang="ts">
 useHead({
-	title: 'Клининговая компания | DDL',
+	title: 'Клининговая компания',
+    titleTemplate: '%s',
 	meta: [
 		{
 			name: 'description',
